@@ -100,9 +100,7 @@ DevPorto/
 │   │   ├── pages/         # Page components
 │   │   └── main.tsx       # Application entry point
 │   ├── index.html         # HTML template
-│   └── package.json       # Frontend dependencies
-├── server/                 # Backend server (if applicable)
-├── shared/                 # Shared schemas and types
+│   └── package.json       # Project dependencies
 ├── tailwind.config.js      # Tailwind CSS configuration
 ├── tsconfig.json          # TypeScript configuration
 └── vite.config.ts         # Vite configuration

@@ -192,6 +192,67 @@ export default function Experience() {
               </div>
             </div>
           </div>
+          <div className="mt-8 bg-white dark:bg-gray-800 rounded-xl shadow-sm border dark:border-gray-700">
+            <div className="p-6">
+              <div className="flex flex-col lg:flex-row gap-8">
+                <div className="lg:w-1/2">
+                  <div className="relative overflow-hidden rounded-lg aspect-video lg:aspect-[4/3]">
+                    <img
+                      src="/assets/image/absen-app.png"
+                      alt="Educational website with colorful design"
+                      className="w-full h-full object-cover sm:object-cover transition-transform duration-300 hover:scale-105 bg-gray-50 dark:bg-gray-700"
+                    />
+                  </div>
+                </div>
+                <div className="lg:w-1/2">
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+                    Admin Website - HR Group
+                  </h4>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                    Januari 2025 - April 2025
+                  </p>
+                  <p className="text-gray-600 dark:text-gray-300 mb-6">
+                    Proyek ini adalah sebuah aplikasi mobile yang dirancang
+                    untuk menyelesaikan studi kasus TA alias Tugas Akhir saya,
+                    aplikasi ini bisa berguna untuk sistem penjadwalan pelajaran
+                    sekolah, petugas bisa mengatur jadwal pelajaran, dan siswa
+                    bisa melihat jadwal pelajaran, termasuk guru bisa melihat
+                    jadwal mengajar mereka.
+                  </p>
+                  <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
+                    <span className="flex items-center gap-1">
+                      <MapPin className="w-4 h-4" />
+                      Office
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <MapPin className="w-4 h-4" />
+                      Brebes, Indonesia
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <Badge className="bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300 text-xs rounded-full font-medium">
+                      React Native
+                    </Badge>
+                    <Badge className="bg-teal-100 text-teal-700 dark:bg-teal-900 dark:text-teal-300 text-xs rounded-full font-medium">
+                      Expo
+                    </Badge>
+                    <Badge className="bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 text-xs rounded-full font-medium">
+                      Firebase
+                    </Badge>
+                  </div>
+                  <Button
+                    className="sidebar-dark text-white px-6 py-2 rounded-lg font-medium hover:opacity-90 transition-colors flex items-center gap-2"
+                    onClick={() =>
+                      window.open("https://github.com/KDSdev94", "_blank")
+                    }
+                  >
+                    Visit Github
+                    <ExternalLink className="w-4 h-4" />
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

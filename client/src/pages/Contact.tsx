@@ -9,6 +9,7 @@ import { SiGmail, SiYoutube, SiInstagram, SiGooglemaps } from "react-icons/si";
 
 import Sidebar from "@/components/Sidebar";
 import MobileHeader from "@/components/MobileHeader";
+import emailjs from "@emailjs/browser";
 import { useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -44,16 +45,15 @@ export default function ContactPage() {
     };
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-      if (!res.ok) {
-        const data = await res.json().catch(() => null);
-        throw new Error(data?.message || "Failed to send");
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error("Email service configuration is missing.");
       }
+
+      await emailjs.send(serviceId, templateId, payload, publicKey);
 
       toast({
         title: "Message sent",

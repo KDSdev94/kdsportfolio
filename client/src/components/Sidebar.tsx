@@ -56,15 +56,13 @@ export default function Sidebar({ activeSection, onNavigate }: SidebarProps) {
 
   return (
     <div
-      className={`fixed left-0 top-0 h-full w-80 text-white z-50 lg:block hidden ${
-        theme === "dark" ? "sidebar-dark" : "bg-white border-r border-gray-200"
-      }`}
+      className={`fixed left-0 top-0 h-full w-80 text-white z-50 lg:block hidden ${theme === "dark" ? "sidebar-dark" : "bg-white border-r border-gray-200"
+        }`}
     >
       {/* Profile Section */}
       <div
-        className={`p-4 border-b ${
-          theme === "dark" ? "border-gray-700" : "border-gray-200"
-        }`}
+        className={`p-4 border-b ${theme === "dark" ? "border-gray-700" : "border-gray-200"
+          }`}
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
@@ -75,27 +73,25 @@ export default function Sidebar({ activeSection, onNavigate }: SidebarProps) {
             />
             <div>
               <h3
-                className={`font-semibold ${
-                  theme === "dark" ? "text-white" : "text-gray-900"
-                }`}
+                className={`font-semibold ${theme === "dark" ? "text-white" : "text-gray-900"
+                  }`}
               >
                 Kurniawan Dwi Saputra
               </h3>
               <p
-                className={`text-sm ${
-                  theme === "dark" ? "text-gray-300" : "text-gray-600"
-                }`}
+                className={`text-sm ${theme === "dark" ? "text-gray-300" : "text-gray-600"
+                  }`}
               >
-                Junior App Developer
+                Admin Website & <br />
+                Designer Grafis
               </p>
             </div>
           </div>
           {/* Theme Toggle Button */}
           <button
             onClick={toggleTheme}
-            className={`p-2 rounded-lg transition-colors ${
-              theme === "dark" ? "hover:bg-gray-700" : "hover:bg-gray-100"
-            }`}
+            className={`p-2 rounded-lg transition-colors ${theme === "dark" ? "hover:bg-gray-700" : "hover:bg-gray-100"
+              }`}
             aria-label="Toggle theme"
           >
             {theme === "dark" ? (
@@ -117,15 +113,14 @@ export default function Sidebar({ activeSection, onNavigate }: SidebarProps) {
             <button
               key={item.id}
               onClick={() => handleNavigation(item.id)}
-              className={`w-full flex items-center space-x-3 px-6 py-3 transition-colors ${
-                isActive
-                  ? theme === "dark"
-                    ? "text-white sidebar-hover border-r-2 border-blue-500"
-                    : "text-blue-600 bg-blue-50 border-r-2 border-blue-500"
-                  : theme === "dark"
+              className={`w-full flex items-center space-x-3 px-6 py-3 transition-colors ${isActive
+                ? theme === "dark"
+                  ? "text-white sidebar-hover border-r-2 border-blue-500"
+                  : "text-blue-600 bg-blue-50 border-r-2 border-blue-500"
+                : theme === "dark"
                   ? "text-gray-300 hover:text-white hover:sidebar-hover"
                   : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-              }`}
+                }`}
             >
               <IconComponent className="w-5 h-5" />
               <span>{item.label}</span>
@@ -137,9 +132,8 @@ export default function Sidebar({ activeSection, onNavigate }: SidebarProps) {
       {/* Social Media Section */}
       <div className="absolute bottom-6 left-4 right-4">
         <p
-          className={`text-xs mb-4 ${
-            theme === "dark" ? "text-gray-400" : "text-gray-500"
-          }`}
+          className={`text-xs mb-4 ${theme === "dark" ? "text-gray-400" : "text-gray-500"
+            }`}
         >
           SOCIAL MEDIA
         </p>
@@ -150,11 +144,10 @@ export default function Sidebar({ activeSection, onNavigate }: SidebarProps) {
               <a
                 key={index}
                 href={social.href}
-                className={`transition-colors ${
-                  theme === "dark"
-                    ? "text-gray-400 hover:text-white"
-                    : "text-gray-500 hover:text-gray-700"
-                }`}
+                className={`transition-colors ${theme === "dark"
+                  ? "text-gray-400 hover:text-white"
+                  : "text-gray-500 hover:text-gray-700"
+                  }`}
               >
                 <IconComponent className="w-4 h-4" />
               </a>
@@ -162,9 +155,8 @@ export default function Sidebar({ activeSection, onNavigate }: SidebarProps) {
           })}
         </div>
         <p
-          className={`text-xs mt-6 ${
-            theme === "dark" ? "text-gray-500" : "text-gray-400"
-          }`}
+          className={`text-xs mt-6 ${theme === "dark" ? "text-gray-500" : "text-gray-400"
+            }`}
         >
           © {new Date().getFullYear()} Kurniawan Dwi Saputra
         </p>
