@@ -5,6 +5,7 @@ import Sidebar from "@/components/Sidebar";
 import MobileHeader from "@/components/MobileHeader";
 import { useLocation } from "wouter";
 import { useEffect, useState } from "react";
+import testimonialsData from "../data/testimonials.json";
 
 export default function TestimonialsPage() {
   const [activeSection, setActiveSection] = useState("testimonials");
@@ -41,62 +42,16 @@ export default function TestimonialsPage() {
     window.location.href = "/";
   };
 
-  const testimonials = [
-    {
-      name: "Riska Martha Utami",
-      role: "Client",
-      order: "Order DekstopApp - Toko Amartha",
-      content:
-        "Kok cepet banget, dan hasilnya juga bagus, revisi juga cepet dan semua sesuai dengan yang diinginkan...👌🙏🏻",
-      rating: 5,
-      avatar: "RMU",
-      avatarColor: "bg-blue-500",
-      date: "June 2025",
-    },
-    {
-      name: "Desika Khozimatul S.",
-      role: "Client",
-      order: "Order App - MyLurah",
-      content:
-        "Aplikasi yang dibuat cuman dalam waktu 2 minggu sudah jadi, mudah dipahami, desain yang dibuat juga sangat menarik tentunya dan sangat worth it 😍👌🙏🏻",
-      rating: 5,
-      avatar: "FA",
-      avatarColor: "bg-green-500",
-      date: "July 2025",
-    },
-    {
-      name: "Alif Nurafifah",
-      role: "Client",
-      order: "Order App - Sampah Tuntas",
-      content:
-        "Tampilan desainnya sederhana tapi sangat bisa dipahami, dan aplikasi berfungsi dengan baik. Keren, Wan.",
-      rating: 5,
-      avatar: "AN",
-      avatarColor: "bg-orange-500",
-      date: "July 2025",
-    },
-    {
-      name: "Febriani Nabila",
-      role: "Client",
-      order: "Order App - Febri Store",
-      content:
-        "Aplikasi yang dibuat cuman dalam waktu 2 minggu sudah jadi, mudah dipahami, desain yang dibuat juga sangat menarik tentunya dan sangat worth it 😍👌🙏🏻",
-      rating: 5,
-      avatar: "F",
-      avatarColor: "bg-purple-500",
-      date: "August 2025",
-    },
-  ];
+  const testimonials = testimonialsData;
 
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, index) => (
       <Star
         key={index}
-        className={`w-4 h-4 ${
-          index < rating
+        className={`w-4 h-4 ${index < rating
             ? "text-yellow-400 fill-current"
             : "text-gray-300 dark:text-gray-600"
-        }`}
+          }`}
       />
     ));
   };
