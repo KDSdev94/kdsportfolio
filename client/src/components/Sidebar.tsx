@@ -67,7 +67,7 @@ export default function Sidebar({ activeSection, onNavigate }: SidebarProps) {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <img
-              src="/assets/hero-image.jpg"
+              src="/assets/logo.png"
               alt="Kurniawan Dwi Saputra"
               className="w-12 h-12 rounded-full object-cover"
             />

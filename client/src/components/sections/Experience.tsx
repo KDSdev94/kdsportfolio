@@ -179,15 +179,7 @@ export default function Experience() {
                       Firebase
                     </Badge>
                   </div>
-                  <Button
-                    className="sidebar-dark text-white px-6 py-2 rounded-lg font-medium hover:opacity-90 transition-colors flex items-center gap-2"
-                    onClick={() =>
-                      window.open("https://github.com/KDSdev94", "_blank")
-                    }
-                  >
-                    Visit Github
-                    <ExternalLink className="w-4 h-4" />
-                  </Button>
+
                 </div>
               </div>
             </div>
@@ -240,15 +232,7 @@ export default function Experience() {
                       Firebase
                     </Badge>
                   </div>
-                  <Button
-                    className="sidebar-dark text-white px-6 py-2 rounded-lg font-medium hover:opacity-90 transition-colors flex items-center gap-2"
-                    onClick={() =>
-                      window.open("https://github.com/KDSdev94", "_blank")
-                    }
-                  >
-                    Visit Github
-                    <ExternalLink className="w-4 h-4" />
-                  </Button>
+
                 </div>
               </div>
             </div>

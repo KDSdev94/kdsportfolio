@@ -5,6 +5,7 @@ import Sidebar from "@/components/Sidebar";
 import MobileHeader from "@/components/MobileHeader";
 import { useLocation } from "wouter";
 import { useEffect, useState } from "react";
+import projectsData from "../data/projects.json";
 import {
   Dialog,
   DialogContent,
@@ -28,8 +29,6 @@ interface Project {
   image: string;
   images?: string[];
   technologies: string[];
-  github?: string;
-
   demo?: string;
 }
 
@@ -71,68 +70,7 @@ export default function PortfolioPage() {
     window.location.href = "/";
   };
 
-  const projects: Project[] = [
-    {
-      title: "E-SkuulTime",
-      description:
-        "Aplikasi ini dirancang untuk memudahkan pengelolaan jadwal, aktivitas akademik, dan komunikasi antara admin, guru, dan siswa.",
-      image: "/assets/image/E-SkuulTime.jpg",
-      images: ["/assets/image/E-SkuulTime.jpg", "/assets/image/E-SkuulTime.jpg"],
-      technologies: ["Expo", "React Native", "Firebase"],
-      github: "https://github.com/KDSdev94/E-SkuulTime",
-    },
-    {
-      title: "Toko Amartha",
-      description:
-        "Aplikasi ini dirancang khusus untuk membantu bisnis retail dalam mengelola transaksi, inventori, dan laporan penjualan dengan interface yang modern dan user-friendly.",
-      image: "/assets/image/toko_amartha.png",
-      images: ["/assets/image/toko_amartha.png", "/assets/image/toko_amartha.png"],
-      technologies: ["Flutter", "Dart", "Hive"],
-      github: "https://github.com/KDSdev94/TokoAmartha",
-    },
-
-    {
-      title: "MyLurah",
-      description:
-        "Aplikasi mobile layanan digital kelurahan untuk memudahkan akses layanan administratif dan informasi bagi warga.",
-      image: "/assets/image/MyLurah.jpg",
-      technologies: ["Expo", "React Native", "Firebase"],
-      github: "https://github.com/KDSdev94/MyLurah",
-    },
-    {
-      title: "Sampah Tuntas",
-      description:
-        "Aplikasi yang dapat membantu warga dalam melaporkan masalah sampah, memantau jadwal pengangkutan.",
-      image: "/assets/image/sampah_tuntas.jpg",
-      technologies: ["Expo", "React Native", "Firebase"],
-      github: "https://github.com/KDSdev94/SampahTuntas",
-    },
-    {
-      title: "Febri Store",
-      description:
-        "Aplikasi ini menyediakan platform lengkap untuk toko online dengan fitur-fitur modern dan user-friendly interface.",
-      image: "/assets/image/FebriStore.jpg",
-      technologies: ["Expo", "React Native", "Firebase"],
-      github: "https://github.com/KDSdev94/FebriStore",
-    },
-
-    {
-      title: "Belajar Anak",
-      description:
-        "Aplikasi ini bertujuan untuk membantu anak-anak dalam belajar dengan cara yang menyenangkan dengan sistem interaktif.",
-      image: "/assets/image/belajar-anak.jpeg",
-      technologies: ["Java", "Firebase"],
-      github: "https://github.com/KDSdev94/belajar-anak",
-    },
-    {
-      title: "Arsip Hotel",
-      description:
-        "Aplikasi ini bertujuan untuk membantu hotel dalam mengelola data pelanggan dengan cara yang menyenangkan dengan sistem interaktif.",
-      image: "/assets/image/arsip-hotel.jpeg",
-      technologies: ["React", "Node.js", "Firebase"],
-      github: "https://github.com/KDSdev94/arsip-hotel",
-    },
-  ];
+  const projects: Project[] = projectsData;
 
   return (
     <div className="bg-gray-50 dark:bg-gray-900 font-inter transition-colors">
@@ -201,20 +139,6 @@ export default function PortfolioPage() {
 
                     {/* Action Buttons */}
                     <div className="flex gap-3">
-                      {project.github && (
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="flex-1 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            window.open(project.github, "_blank");
-                          }}
-                        >
-                          <Github className="w-4 h-4 mr-2" />
-                          GitHub
-                        </Button>
-                      )}
                       {project.demo && (
                         <Button
                           size="sm"
@@ -225,7 +149,7 @@ export default function PortfolioPage() {
                           }}
                         >
                           <ExternalLink className="w-4 h-4 mr-2" />
-                          Demo
+                          Lihat Website
                         </Button>
                       )}
                     </div>
@@ -296,19 +220,6 @@ export default function PortfolioPage() {
                       </DialogDescription>
 
                       <div className="flex gap-4">
-                        {selectedProject.github && (
-                          <Button
-                            variant="outline"
-                            className="flex-1 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 h-12"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              window.open(selectedProject.github, "_blank");
-                            }}
-                          >
-                            <Github className="w-5 h-5 mr-2" />
-                            Lihat Source Code
-                          </Button>
-                        )}
                         {selectedProject.demo && (
                           <Button
                             className="flex-1 sidebar-dark text-white hover:opacity-90 h-12"
@@ -318,7 +229,7 @@ export default function PortfolioPage() {
                             }}
                           >
                             <ExternalLink className="w-5 h-5 mr-2" />
-                            Lihat Demo Live
+                            Lihat Website
                           </Button>
                         )}
                       </div>

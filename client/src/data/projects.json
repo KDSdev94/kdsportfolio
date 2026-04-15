@@ -1,0 +1,80 @@
+[
+    {
+        "title": "E-SkuulTime",
+        "description": "Aplikasi ini dirancang untuk memudahkan pengelolaan jadwal, aktivitas akademik, dan komunikasi antara admin, guru, dan siswa.",
+        "image": "/assets/image/E-SkuulTime.jpg",
+        "images": [
+            "/assets/image/E-SkuulTime.jpg",
+            "/assets/image/E-SkuulTime.jpg"
+        ],
+        "technologies": [
+            "Expo",
+            "React Native",
+            "Firebase"
+        ]
+    },
+    {
+        "title": "Toko Amartha",
+        "description": "Aplikasi ini dirancang khusus untuk membantu bisnis retail dalam mengelola transaksi, inventori, dan laporan penjualan dengan interface yang modern dan user-friendly.",
+        "image": "/assets/image/toko_amartha.png",
+        "images": [
+            "/assets/image/toko_amartha.png",
+            "/assets/image/toko_amartha.png"
+        ],
+        "technologies": [
+            "Flutter",
+            "Dart",
+            "Hive"
+        ]
+    },
+    {
+        "title": "MyLurah",
+        "description": "Aplikasi mobile layanan digital kelurahan untuk memudahkan akses layanan administratif dan informasi bagi warga.",
+        "image": "/assets/image/MyLurah.jpg",
+        "technologies": [
+            "Expo",
+            "React Native",
+            "Firebase"
+        ]
+    },
+    {
+        "title": "Sampah Tuntas",
+        "description": "Aplikasi yang dapat membantu warga dalam melaporkan masalah sampah, memantau jadwal pengangkutan.",
+        "image": "/assets/image/sampah_tuntas.jpg",
+        "technologies": [
+            "Expo",
+            "React Native",
+            "Firebase"
+        ]
+    },
+    {
+        "title": "Febri Store",
+        "description": "Aplikasi ini menyediakan platform lengkap untuk toko online dengan fitur-fitur modern dan user-friendly interface.",
+        "image": "/assets/image/FebriStore.jpg",
+        "technologies": [
+            "Expo",
+            "React Native",
+            "Firebase"
+        ]
+    },
+    {
+        "title": "Belajar Anak",
+        "description": "Aplikasi ini bertujuan untuk membantu anak-anak dalam belajar dengan cara yang menyenangkan dengan sistem interaktif.",
+        "image": "/assets/image/belajar-anak.jpeg",
+        "technologies": [
+            "Java",
+            "Firebase"
+        ]
+    },
+    {
+        "title": "Arsip Hotel",
+        "description": "Aplikasi ini bertujuan untuk membantu hotel dalam mengelola data pelanggan dengan cara yang menyenangkan dengan sistem interaktif.",
+        "image": "/assets/image/arsip-hotel.jpeg",
+        "technologies": [
+            "React",
+            "Node.js",
+            "Firebase"
+        ],
+        "demo": ""
+    }
+]
