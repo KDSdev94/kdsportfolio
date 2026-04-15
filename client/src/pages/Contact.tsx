@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
-import { FaWhatsapp, FaGithub, FaTelegram } from "react-icons/fa";
+import { FaWhatsapp, FaGithub, FaTelegram, FaLinkedin } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
 
 import { SiGmail, SiYoutube, SiInstagram, SiGooglemaps } from "react-icons/si";
@@ -130,6 +130,7 @@ export default function ContactPage() {
       case "github": return FaGithub;
       case "telegram": return FaTelegram;
       case "instagram": return SiInstagram;
+      case "linkedin": return FaLinkedin;
       case "whatsapp": return FaWhatsapp;
       case "gmail": return SiGmail;
       default: return FaTelegram;

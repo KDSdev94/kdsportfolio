@@ -9,6 +9,7 @@ import {
   Mail,
   Heart,
   Github,
+  Linkedin,
 } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 import { useLocation } from "wouter";
@@ -63,6 +64,7 @@ export default function MobileHeader({
       case "github": return Github;
       case "telegram": return FaTelegram;
       case "instagram": return IoLogoInstagram;
+      case "linkedin": return Linkedin;
       case "whatsapp": return FaWhatsapp;
       case "gmail": return SiGmail;
       default: return FaTelegram;

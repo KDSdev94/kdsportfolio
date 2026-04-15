@@ -6,6 +6,7 @@ import {
   IoMailOutline,
   IoLogoGithub,
   IoLogoInstagram,
+  IoLogoLinkedin,
 } from "react-icons/io5";
 import { FaSun, FaMoon, FaTelegram, FaWhatsapp } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
@@ -52,6 +53,7 @@ export default function Sidebar({ activeSection, onNavigate }: SidebarProps) {
       case "github": return IoLogoGithub;
       case "telegram": return FaTelegram;
       case "instagram": return IoLogoInstagram;
+      case "linkedin": return IoLogoLinkedin;
       case "whatsapp": return FaWhatsapp;
       case "gmail": return SiGmail;
       default: return FaTelegram;
