@@ -12,6 +12,7 @@ import MobileHeader from "@/components/MobileHeader";
 import emailjs from "@emailjs/browser";
 import { useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import socialsData from "../data/socials.json";
 
 export default function ContactPage() {
   const [activeSection, setActiveSection] = useState("contact");
@@ -124,19 +125,21 @@ export default function ContactPage() {
     },
   ];
 
-  const socialLinks = [
-    { icon: FaGithub, href: "https://github.com/KDSdev94", label: "GitHub" },
-    {
-      icon: FaTelegram,
-      href: "https://t.me/kur0409",
-      label: "LinkedIn",
-    },
-    {
-      icon: SiInstagram,
-      href: "https://instagram.com/kdsaputra04",
-      label: "Instagram",
-    },
-  ];
+  const getSocialIcon = (platform: string) => {
+    switch (platform) {
+      case "github": return FaGithub;
+      case "telegram": return FaTelegram;
+      case "instagram": return SiInstagram;
+      case "whatsapp": return FaWhatsapp;
+      case "gmail": return SiGmail;
+      default: return FaTelegram;
+    }
+  };
+
+  const socialLinks = socialsData.map((item) => ({
+    ...item,
+    icon: getSocialIcon(item.platform),
+  }));
 
   return (
     <div className="bg-gray-50 dark:bg-gray-900 font-inter transition-colors">

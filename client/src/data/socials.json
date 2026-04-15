@@ -1,0 +1,27 @@
+[
+    {
+        "platform": "github",
+        "href": "https://github.com/KDSdev94",
+        "label": "GitHub"
+    },
+    {
+        "platform": "telegram",
+        "href": "https://t.me/kur0409",
+        "label": "Telegram"
+    },
+    {
+        "platform": "instagram",
+        "href": "https://instagram.com/kdsaputra04",
+        "label": "Instagram"
+    },
+    {
+        "platform": "whatsapp",
+        "href": "https://wa.me/6282134528638",
+        "label": "WhatsApp"
+    },
+    {
+        "platform": "gmail",
+        "href": "mailto:kdwisaputra04@gmail.com",
+        "label": "Gmail"
+    }
+]

@@ -12,6 +12,7 @@ import { SiGmail } from "react-icons/si";
 
 import { useTheme } from "./ThemeProvider";
 import { useLocation } from "wouter";
+import socialsData from "../data/socials.json";
 
 interface SidebarProps {
   activeSection: string;
@@ -46,13 +47,21 @@ export default function Sidebar({ activeSection, onNavigate }: SidebarProps) {
     }
   };
 
-  const socialLinks = [
-    { icon: IoLogoGithub, href: "https://github.com/KDSdev94" },
-    { icon: FaTelegram, href: "https://t.me/kur0409" },
-    { icon: IoLogoInstagram, href: "https://instagram.com/kdsaputra04" },
-    { icon: FaWhatsapp, href: "https://wa.me/6282134528638" },
-    { icon: SiGmail, href: "mailto:kdwisaputra04@gmail.com" },
-  ];
+  const getSocialIcon = (platform: string) => {
+    switch (platform) {
+      case "github": return IoLogoGithub;
+      case "telegram": return FaTelegram;
+      case "instagram": return IoLogoInstagram;
+      case "whatsapp": return FaWhatsapp;
+      case "gmail": return SiGmail;
+      default: return FaTelegram;
+    }
+  };
+
+  const socialLinks = socialsData.map((item) => ({
+    ...item,
+    icon: getSocialIcon(item.platform),
+  }));
 
   return (
     <div

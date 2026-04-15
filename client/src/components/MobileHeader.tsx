@@ -15,6 +15,7 @@ import { useLocation } from "wouter";
 import { FaTelegram, FaWhatsapp } from "react-icons/fa";
 import { IoLogoInstagram } from "react-icons/io5";
 import { SiGmail } from "react-icons/si";
+import socialsData from "../data/socials.json";
 
 interface MobileHeaderProps {
   onNavigate: (section: string) => void;
@@ -57,13 +58,21 @@ export default function MobileHeader({
     // { id: "donation", label: "Donasi", icon: Heart },
   ];
 
-  const socialLinks = [
-    { icon: Github, href: "https://github.com/KDSdev94" },
-    { icon: FaTelegram, href: "https://t.me/kur0409" },
-    { icon: IoLogoInstagram, href: "https://instagram.com/kdsaputra04" },
-    { icon: FaWhatsapp, href: "https://wa.me/6282134528638" },
-    { icon: SiGmail, href: "mailto:kdwisaputra04@gmail.com" },
-  ];
+  const getSocialIcon = (platform: string) => {
+    switch (platform) {
+      case "github": return Github;
+      case "telegram": return FaTelegram;
+      case "instagram": return IoLogoInstagram;
+      case "whatsapp": return FaWhatsapp;
+      case "gmail": return SiGmail;
+      default: return FaTelegram;
+    }
+  };
+
+  const socialLinks = socialsData.map((item) => ({
+    ...item,
+    icon: getSocialIcon(item.platform),
+  }));
 
   const handleNavigate = (sectionId: string) => {
     if (sectionId === "portfolio") {
