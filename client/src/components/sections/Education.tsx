@@ -3,7 +3,7 @@ import { GraduationCap, Presentation, Trophy, Medal } from "lucide-react";
 export default function Education() {
   return (
     <section id="education" className="bg-white dark:bg-gray-800 py-4">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
           Riwayat Pendidikan
         </h2>

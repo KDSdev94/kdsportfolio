@@ -8,7 +8,7 @@ export default function Experience() {
       title: "Sampah Tuntas",
       description:
         "Sebuah aplikasi digital untuk pelaporan adanya sampah di sekitar kita dari laporan warga dengan menggunakan teknologi Expo dan posisi GPS untuk mengetahui lokasi sampah.",
-      image: "/assets/image/sampah_tuntas.jpg",
+      image: "/assets/projects/mobile/sampah-tuntas/sampah_tuntas.jpg",
       tags: [
         {
           name: "React Native",
@@ -30,7 +30,7 @@ export default function Experience() {
       title: "Febri Store",
       description:
         "Sebuah aplikasi digital untuk menjual produk kebutuhan sehari-hari dengan menggunakan teknologi React Native dan Firebase.",
-      image: "/assets/image/FebriStore.jpg",
+      image: "/assets/projects/mobile/febri-store/FebriStore.jpg",
       tags: [
         {
           name: "React Native",
@@ -52,7 +52,7 @@ export default function Experience() {
       title: "MyLurah",
       description:
         "Sebuah aplikasi digital untuk membantu warga dalam mengakses informasi terkait pemerintahan daerah dengan menggunakan teknologi React Native dan Firebase.",
-      image: "/assets/image/MyLurah.jpg",
+      image: "/assets/projects/mobile/mylurah/MyLurah.jpg",
       tags: [
         {
           name: "React Native",
@@ -74,7 +74,7 @@ export default function Experience() {
 
   return (
     <section id="experience" className="bg-gray-50 dark:bg-gray-900 py-4">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
           Pengalaman
         </h2>
@@ -106,13 +106,13 @@ export default function Experience() {
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-contain sm:object-cover transition-transform duration-300 hover:scale-105 bg-gray-50 dark:bg-gray-700"
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105 bg-gray-50 dark:bg-gray-700"
                     />
                   </div>
                   <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
                     {project.title}
                   </h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -137,9 +137,9 @@ export default function Experience() {
                 <div className="lg:w-1/2">
                   <div className="relative overflow-hidden rounded-lg aspect-video lg:aspect-[4/3]">
                     <img
-                      src="/assets/image/E-SkuulTime.jpg"
+                      src="/assets/projects/mobile/e-skuultime/E-SkuulTime.png"
                       alt="Educational website with colorful design"
-                      className="w-full h-full object-contain sm:object-cover transition-transform duration-300 hover:scale-105 bg-gray-50 dark:bg-gray-700"
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105 bg-gray-50 dark:bg-gray-700"
                     />
                   </div>
                 </div>
@@ -190,7 +190,7 @@ export default function Experience() {
                 <div className="lg:w-1/2">
                   <div className="relative overflow-hidden rounded-lg aspect-video lg:aspect-[4/3]">
                     <img
-                      src="/assets/image/absen-app.png"
+                      src="/assets/projects/mobile/absen-app/absen-app.png"
                       alt="Educational website with colorful design"
                       className="w-full h-full object-cover sm:object-cover transition-transform duration-300 hover:scale-105 bg-gray-50 dark:bg-gray-700"
                     />

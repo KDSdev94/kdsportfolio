@@ -2,79 +2,118 @@
     {
         "title": "E-SkuulTime",
         "description": "Aplikasi ini dirancang untuk memudahkan pengelolaan jadwal, aktivitas akademik, dan komunikasi antara admin, guru, dan siswa.",
-        "image": "/assets/image/E-SkuulTime.jpg",
+        "image": "/assets/projects/mobile/e-skuultime/E-SkuulTime.png",
         "images": [
-            "/assets/image/E-SkuulTime.jpg",
-            "/assets/image/E-SkuulTime.jpg"
+            "/assets/projects/mobile/e-skuultime/E-SkuulTime.png",
+            "/assets/projects/mobile/e-skuultime/login.png"
         ],
         "technologies": [
             "Expo",
             "React Native",
             "Firebase"
-        ]
+        ],
+        "category": "Mobile App"
     },
     {
         "title": "Toko Amartha",
         "description": "Aplikasi ini dirancang khusus untuk membantu bisnis retail dalam mengelola transaksi, inventori, dan laporan penjualan dengan interface yang modern dan user-friendly.",
-        "image": "/assets/image/toko_amartha.png",
+        "image": "/assets/projects/desktop/toko-amartha/toko_amartha.png",
         "images": [
-            "/assets/image/toko_amartha.png",
-            "/assets/image/toko_amartha.png"
+            "/assets/projects/desktop/toko-amartha/toko_amartha.png",
+            "/assets/projects/desktop/toko-amartha/toko_amartha2.png"
         ],
         "technologies": [
             "Flutter",
             "Dart",
             "Hive"
-        ]
+        ],
+        "category": "Desktop App"
     },
     {
         "title": "MyLurah",
         "description": "Aplikasi mobile layanan digital kelurahan untuk memudahkan akses layanan administratif dan informasi bagi warga.",
-        "image": "/assets/image/MyLurah.jpg",
+        "image": "/assets/projects/mobile/mylurah/mylurah.png",
         "technologies": [
             "Expo",
             "React Native",
             "Firebase"
-        ]
+        ],
+        "category": "Mobile App"
     },
     {
         "title": "Sampah Tuntas",
         "description": "Aplikasi yang dapat membantu warga dalam melaporkan masalah sampah, memantau jadwal pengangkutan.",
-        "image": "/assets/image/sampah_tuntas.jpg",
+        "image": "/assets/projects/mobile/sampah-tuntas/sampah_tuntas.jpg",
         "technologies": [
             "Expo",
             "React Native",
             "Firebase"
-        ]
+        ],
+        "category": "Mobile App"
     },
     {
         "title": "Febri Store",
         "description": "Aplikasi ini menyediakan platform lengkap untuk toko online dengan fitur-fitur modern dan user-friendly interface.",
-        "image": "/assets/image/FebriStore.jpg",
+        "image": "/assets/projects/mobile/febri-store/febri-store.png",
         "technologies": [
             "Expo",
             "React Native",
             "Firebase"
-        ]
+        ],
+        "category": "Mobile App"
     },
     {
         "title": "Belajar Anak",
         "description": "Aplikasi ini bertujuan untuk membantu anak-anak dalam belajar dengan cara yang menyenangkan dengan sistem interaktif.",
-        "image": "/assets/image/belajar-anak.jpeg",
+        "image": "/assets/projects/mobile/belajar-anak/belajar-anak.jpeg",
         "technologies": [
             "Java",
             "Firebase"
-        ]
+        ],
+        "category": "Mobile App"
+    },
+    {
+        "title": "HR Group Property - CP",
+        "description": "HR Group Property Company Profile adalah website yang dirancang untuk memperkuat branding dan kehadiran digital perusahaan di bidang properti. Melalui tampilan yang modern dan informatif, website ini menyajikan profil perusahaan, layanan unggulan, serta portofolio proyek guna menarik dan membangun kepercayaan calon konsumen.",
+        "image": "/assets/projects/web/hr-group-cp/hr-group-cp.png",
+        "images": [
+            "/assets/projects/web/hr-group-cp/hr-group-cp.png",
+            "/assets/projects/web/hr-group-cp/hr-group-cp2.png"
+        ],
+        "technologies": [
+            "VueJS",
+            "React Vite",
+            "Tailwind CSS"
+        ],
+        "demo": "https://hrgroupsuksesid.web.app/",
+        "category": "Website"
     },
     {
         "title": "Arsip Hotel",
         "description": "Aplikasi ini bertujuan untuk membantu hotel dalam mengelola data pelanggan dengan cara yang menyenangkan dengan sistem interaktif.",
-        "image": "/assets/image/arsip-hotel.jpeg",
+        "image": "/assets/projects/web/arsip-hotel/arsip-hotel.png",
         "technologies": [
-            "React",
-            "Node.js",
+            "React Vite",
+            "Tailwind CSS",
             "Firebase"
         ],
-        "demo": ""
+        "demo": "https://arsip-hotel.vercel.app/",
+        "category": "Website"
+    },
+    {
+        "title": "Hotel Room Monitor",
+        "description": "Aplikasi Hotel Room Monitor adalah sistem manajemen kamar hotel berbasis web yang dirancang untuk membantu staf dalam memantau status kamar secara real-time. Dengan tampilan interaktif, pengguna dapat dengan mudah melihat ketersediaan kamar, status kebersihan, serta mengelola penugasan housekeeping secara efisien.",
+        "image": "/assets/projects/web/hotel-room-monitor/hotel-room-monitor-login.png",
+        "images": [
+            "/assets/projects/web/hotel-room-monitor/hotel-room-monitor-login.png",
+            "/assets/projects/web/hotel-room-monitor/hotel-room-monitor-dashboard.png"
+        ],
+        "technologies": [
+            "React Vite",
+            "Tailwind CSS",
+            "Firebase"
+        ],
+        "demo": "https://hotel-monitor.vercel.app",
+        "category": "Website"
     }
 ]

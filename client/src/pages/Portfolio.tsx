@@ -29,13 +29,18 @@ interface Project {
   image: string;
   images?: string[];
   technologies: string[];
+  category: string;
   demo?: string;
 }
 
 export default function PortfolioPage() {
   const [activeSection, setActiveSection] = useState("portfolio");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const [, setLocation] = useLocation();
+
+  const categories = ["All", "Mobile App", "Website", "Desktop App"];
 
 
   useEffect(() => {
@@ -71,6 +76,9 @@ export default function PortfolioPage() {
   };
 
   const projects: Project[] = projectsData;
+  const filteredProjects = selectedCategory === "All"
+    ? projects
+    : projects.filter(p => p.category === selectedCategory);
 
   return (
     <div className="bg-gray-50 dark:bg-gray-900 font-inter transition-colors">
@@ -83,7 +91,7 @@ export default function PortfolioPage() {
 
       <div className="lg:ml-80 pt-20 lg:pt-0">
         <section id="portfolio" className="bg-white dark:bg-gray-800 py-4">
-          <div className="max-w-7xl mx-auto px-6">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
             {/* Header Section */}
             <div className=" mb-12">
               <h1 className="mb-2 text-3xl font-bold tracking-tight text-slate-800 dark:text-white">
@@ -98,9 +106,26 @@ export default function PortfolioPage() {
               </p>
             </div>
 
+            {/* Category Filter */}
+            <div className="flex flex-wrap gap-3 mb-10">
+              {categories.map((cat) => (
+                <Button
+                  key={cat}
+                  variant={selectedCategory === cat ? "default" : "outline"}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`rounded-full px-6 transition-all duration-300 ${selectedCategory === cat
+                    ? "sidebar-dark text-white ring-2 ring-teal-500 ring-offset-2"
+                    : "text-gray-600 dark:text-gray-300 hover:bg-teal-50 dark:hover:bg-teal-900/20"
+                    }`}
+                >
+                  {cat}
+                </Button>
+              ))}
+            </div>
+
             {/* Projects Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projects.map((project, index) => (
+              {filteredProjects.map((project, index) => (
                 <div
                   key={index}
                   onClick={() => setSelectedProject(project)}
@@ -112,16 +137,21 @@ export default function PortfolioPage() {
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-contain sm:object-cover transition-transform duration-300 group-hover:scale-105 bg-gray-50 dark:bg-gray-700"
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 bg-gray-50 dark:bg-gray-700"
                     />
                   </div>
 
                   {/* Project Content */}
                   <div className="p-6">
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                    <div className="flex items-center justify-between mb-3">
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                        {project.title}
+                      </h3>
+                      <Badge className="bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300 text-[10px] uppercase tracking-wider font-bold">
+                        {project.category}
+                      </Badge>
+                    </div>
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed line-clamp-3">
                       {project.description}
                     </p>
 
@@ -145,7 +175,8 @@ export default function PortfolioPage() {
                           className="flex-1 sidebar-dark text-white hover:opacity-90"
                           onClick={(e) => {
                             e.stopPropagation();
-                            window.open(project.demo, "_blank");
+                            const url = project.demo?.startsWith('http') ? project.demo : `https://${project.demo}`;
+                            window.open(url, "_blank");
                           }}
                         >
                           <ExternalLink className="w-4 h-4 mr-2" />
@@ -161,7 +192,7 @@ export default function PortfolioPage() {
 
             {/* Project Detail Dialog */}
             <Dialog open={!!selectedProject} onOpenChange={(open) => !open && setSelectedProject(null)}>
-              <DialogContent className="max-w-2xl bg-white dark:bg-gray-800 p-0 overflow-hidden border-none shadow-2xl">
+              <DialogContent className="max-w-2xl bg-white dark:bg-gray-800 p-0 overflow-y-auto max-h-[90vh] border-none shadow-2xl">
                 {selectedProject && (
                   <>
                     <div className="relative overflow-hidden bg-gray-100 dark:bg-gray-700">
@@ -170,12 +201,20 @@ export default function PortfolioPage() {
                           <CarouselContent>
                             {selectedProject.images.map((img, i) => (
                               <CarouselItem key={i}>
-                                <div className="aspect-video">
+                                <div
+                                  className="aspect-video cursor-pointer relative group"
+                                  onClick={() => setFullscreenImage(img)}
+                                >
                                   <img
                                     src={img}
                                     alt={`${selectedProject.title} ${i + 1}`}
-                                    className="w-full h-full object-contain sm:object-cover"
+                                    className="w-full h-full object-cover"
                                   />
+                                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                                    <span className="opacity-0 group-hover:opacity-100 bg-black/50 text-white px-3 py-1 rounded-full text-sm backdrop-blur-sm transition-opacity">
+                                      Klik untuk zoom
+                                    </span>
+                                  </div>
                                 </div>
                               </CarouselItem>
                             ))}
@@ -186,21 +225,34 @@ export default function PortfolioPage() {
                           </div>
                         </Carousel>
                       ) : (
-                        <div className="aspect-video">
+                        <div
+                          className="aspect-video cursor-pointer relative group"
+                          onClick={() => setFullscreenImage(selectedProject.image)}
+                        >
                           <img
                             src={selectedProject.image}
                             alt={selectedProject.title}
-                            className="w-full h-full object-contain sm:object-cover"
+                            className="w-full h-full object-cover"
                           />
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                            <span className="opacity-0 group-hover:opacity-100 bg-black/50 text-white px-3 py-1 rounded-full text-sm backdrop-blur-sm transition-opacity">
+                              Klik untuk zoom
+                            </span>
+                          </div>
                         </div>
                       )}
                     </div>
 
                     <div className="p-8">
                       <DialogHeader className="mb-6">
-                        <DialogTitle className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                          {selectedProject.title}
-                        </DialogTitle>
+                        <div className="flex items-center justify-between mb-2">
+                          <DialogTitle className="text-2xl font-bold text-gray-900 dark:text-white">
+                            {selectedProject.title}
+                          </DialogTitle>
+                          <Badge className="bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300 text-[10px] uppercase tracking-wider font-bold">
+                            {selectedProject.category}
+                          </Badge>
+                        </div>
                         <div className="flex flex-wrap gap-2">
                           {selectedProject.technologies.map((tech, techIndex) => (
                             <Badge
@@ -225,7 +277,8 @@ export default function PortfolioPage() {
                             className="flex-1 sidebar-dark text-white hover:opacity-90 h-12"
                             onClick={(e) => {
                               e.stopPropagation();
-                              window.open(selectedProject.demo, "_blank");
+                              const url = selectedProject.demo?.startsWith('http') ? selectedProject.demo : `https://${selectedProject.demo}`;
+                              window.open(url, "_blank");
                             }}
                           >
                             <ExternalLink className="w-5 h-5 mr-2" />
@@ -239,6 +292,20 @@ export default function PortfolioPage() {
               </DialogContent>
             </Dialog>
 
+
+            <Dialog open={!!fullscreenImage} onOpenChange={(open) => !open && setFullscreenImage(null)}>
+              <DialogContent className="max-w-[95vw] lg:max-w-7xl max-h-[95vh] p-0 overflow-hidden bg-transparent border-none shadow-none flex flex-col items-center justify-center">
+                {fullscreenImage && (
+                  <div className="relative w-full h-full flex items-center justify-center" onClick={() => setFullscreenImage(null)}>
+                    <img
+                      src={fullscreenImage}
+                      alt="Fullscreen focus view"
+                      className="max-w-full max-h-[90vh] object-contain rounded-md"
+                    />
+                  </div>
+                )}
+              </DialogContent>
+            </Dialog>
 
             {/* Call to Action */}
             <div className="text-center mt-16">

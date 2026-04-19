@@ -37,7 +37,7 @@ export default function Skills() {
 
   return (
     <section id="skills" className="bg-gray-50 dark:bg-gray-900 py-4">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
           Keterampilan
         </h2>
