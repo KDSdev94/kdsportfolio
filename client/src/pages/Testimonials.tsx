@@ -6,9 +6,26 @@ import MobileHeader from "@/components/MobileHeader";
 import { useLocation } from "wouter";
 import { useEffect, useState } from "react";
 import testimonialsData from "../data/testimonials.json";
+import { LocalizedText, useLanguage } from "../contexts/LanguageContext";
+import { usePageMeta } from "../hooks/use-page-meta";
+
+interface Testimonial {
+  name: string;
+  role: LocalizedText;
+  order: LocalizedText;
+  content: LocalizedText;
+  rating: number;
+  avatar: string;
+  avatarColor: string;
+  date: LocalizedText;
+}
 
 export default function TestimonialsPage() {
   const [activeSection, setActiveSection] = useState("testimonials");
+  const { t, localize } = useLanguage();
+  const [, setLocation] = useLocation();
+
+  usePageMeta(t("page.testimonials"));
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,11 +55,10 @@ export default function TestimonialsPage() {
       // Already on testimonials page
       return;
     }
-    // Navigate back to home page
-    window.location.href = "/";
+    setLocation("/");
   };
 
-  const testimonials = testimonialsData;
+  const testimonials = testimonialsData as Testimonial[];
 
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, index) => (
@@ -58,7 +74,6 @@ export default function TestimonialsPage() {
 
   return (
     <div className="bg-gray-50 dark:bg-gray-900 font-inter transition-colors">
-      <title>Kurniawan Dwi Saputra - {activeSection}</title>
       <Sidebar activeSection={activeSection} onNavigate={scrollToSection} />
       <MobileHeader
         onNavigate={scrollToSection}
@@ -71,15 +86,12 @@ export default function TestimonialsPage() {
             {/* Header Section */}
             <div className="mb-12">
               <h1 className="mb-2 text-3xl font-bold tracking-tight text-slate-800 dark:text-white">
-                Testimoni
+                {t("testimonials.title")}
               </h1>
               <div className="mb-6 h-1 w-16 bg-slate-200 dark:bg-slate-700"></div>
 
               <p className="text-lg text-gray-600 dark:text-gray-300 max-w-6xl leading-relaxed">
-                Dalam setiap proyek, kepuasan klien adalah prioritas utama saya.
-                Testimoni ini mencerminkan dedikasi saya untuk membangun
-                aplikasi yang berfungsi dengan baik dan sesuai dengan yang
-                diinginkan.
+                {t("testimonials.description")}
               </p>
             </div>
 
@@ -107,13 +119,13 @@ export default function TestimonialsPage() {
 
                     {/* Testimonial Text */}
                     <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed italic">
-                      "{testimonial.content}"
+                      "{localize(testimonial.content)}"
                     </p>
 
                     {/* Order Details */}
                     <div className="mb-4">
                       <Badge className="bg-teal-100 text-teal-700 dark:bg-teal-900 dark:text-teal-300 text-xs rounded-full font-medium px-3 py-1">
-                        {testimonial.order}
+                        {localize(testimonial.order)}
                       </Badge>
                     </div>
 
@@ -130,12 +142,12 @@ export default function TestimonialsPage() {
                             {testimonial.name}
                           </h4>
                           <p className="text-sm text-gray-500 dark:text-gray-400">
-                            {testimonial.role}
+                            {localize(testimonial.role)}
                           </p>
                         </div>
                       </div>
                       <span className="text-xs text-gray-400 dark:text-gray-500">
-                        {testimonial.date}
+                        {localize(testimonial.date)}
                       </span>
                     </div>
                   </div>
@@ -146,14 +158,13 @@ export default function TestimonialsPage() {
             {/* Call to Action */}
             <div className="text-center mt-16">
               <p className="text-gray-600 dark:text-gray-300 mb-6">
-                Siap untuk bergabung dengan klien yang puas? Ayo mulai proyek
-                Anda dengan saya hari ini!
+                {t("testimonials.cta.text")}
               </p>
               <Button
-                onClick={() => (window.location.href = "/contact")}
+                onClick={() => setLocation("/contact")}
                 className="sidebar-dark text-white px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-colors"
               >
-                Start Your Project
+                {t("testimonials.cta.button")}
               </Button>
             </div>
           </div>

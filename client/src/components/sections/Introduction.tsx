@@ -1,9 +1,11 @@
 import { ArrowRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLocation } from "wouter";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 export default function Introduction() {
   const [, setLocation] = useLocation();
+  const { t } = useLanguage();
 
   const handlePortfolioView = () => {
     setLocation("/portfolio");
@@ -24,19 +26,17 @@ export default function Introduction() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
-              Halo, Saya Kurniawan Dwi Saputra
+              {t("intro.greeting")}
             </h1>
             <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-8">
-              Saya seorang freelance junior app developer berasal dari Brebes,
-              Indonesia, dengan pengalaman dalam pengembangan aplikasi mobile.
-              Dengan menggunakan teknologi React Native ataupun Flutter.
+              {t("intro.description")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <Button
                 onClick={handlePortfolioView}
                 className="sidebar-dark text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-colors flex items-center justify-center gap-2"
               >
-                See Portfolio
+                {t("intro.see_portfolio")}
                 <ArrowRight className="w-4 h-4" />
               </Button>
               <Button
@@ -44,7 +44,7 @@ export default function Introduction() {
                 onClick={handleResumeDownload}
                 className="border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 px-6 py-3 rounded-lg font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex items-center justify-center gap-2"
               >
-                Download Resume
+                {t("intro.download_resume")}
                 <Download className="w-4 h-4" />
               </Button>
             </div>
@@ -60,11 +60,12 @@ export default function Introduction() {
               <div className="relative bg-white dark:bg-gray-700 p-4 rounded-2xl shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-300">
                 <img
                   src="/assets/hero-image.jpg"
-                  alt="Watching movies and tea time 🍵✨"
+                  alt={t("intro.status")}
+                  loading="lazy"
                   className="rounded-xl w-80 h-80 object-cover mb-4"
                 />
                 <p className="text-sm text-gray-500 dark:text-gray-400 flex items-center justify-center gap-2">
-                  Watching movies and tea time 🍵✨
+                  {t("intro.status")}
                 </p>
               </div>
             </div>

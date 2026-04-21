@@ -1,37 +1,44 @@
+import { useLanguage } from "../../contexts/LanguageContext";
+
 export default function Skills() {
+  const { t } = useLanguage();
+
   const skills = [
     {
       name: "Javascript",
-      icon: "🟨",
-      color:
-        "bg-yellow-100 text-yellow-600 dark:bg-yellow-900 dark:text-yellow-300",
+      image: "/assets/logo/js.jpg",
     },
     {
       name: "Firebase",
-      icon: "🔵",
-      color: "bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300",
+      image: "/assets/logo/firebase.png",
     },
     {
       name: "Git",
-      icon: "⚫",
-      color: "bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-300",
+      image: "/assets/logo/git.png",
     },
     {
       name: "Flutter",
-      icon: "🟣",
-      color:
-        "bg-purple-100 text-purple-600 dark:bg-purple-900 dark:text-purple-300",
+      image: "/assets/logo/flutter.png",
     },
     {
-      name: "React Native",
-      icon: "🩷",
-      color: "bg-pink-100 text-pink-600 dark:bg-pink-900 dark:text-pink-300",
+      name: "Expo",
+      image: "/assets/logo/expo.webp",
     },
     {
       name: "Next.js",
-      icon: "🟣",
-      color:
-        "bg-indigo-100 text-indigo-600 dark:bg-indigo-900 dark:text-indigo-300",
+      image: "/assets/logo/nextjs.png",
+    },
+    {
+      name: "Vue.js",
+      image: "/assets/logo/vue.png",
+    },
+    {
+      name: "Java",
+      image: "/assets/logo/java.png",
+    },
+    {
+      name: "MySQL",
+      image: "/assets/logo/mysql.png",
     },
   ];
 
@@ -39,22 +46,27 @@ export default function Skills() {
     <section id="skills" className="bg-gray-50 dark:bg-gray-900 py-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-          Keterampilan
+          {t("skills.title")}
         </h2>
         <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-          Keterampilan berasal dari pengalaman dan pengetahuan yang saya kuasai.
+          {t("skills.description")}
         </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-6">
           {skills.map((skill, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-gray-800 rounded-xl p-6 text-center shadow-sm hover:shadow-md transition-shadow border dark:border-gray-700"
+              className="bg-white dark:bg-gray-800 rounded-xl p-6 text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 border dark:border-gray-700"
             >
               <div
-                className={`w-12 h-12 ${skill.color} rounded-lg flex items-center justify-center mx-auto mb-3`}
+                className="w-16 h-16 bg-gray-50 dark:bg-white rounded-xl flex items-center justify-center mx-auto mb-4 p-3 shadow-inner"
               >
-                <span className="text-2xl">{skill.icon}</span>
+                <img
+                  src={skill.image}
+                  alt={skill.name}
+                  loading="lazy"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <h4 className="font-medium text-gray-900 dark:text-white">
                 {skill.name}

@@ -1,42 +1,90 @@
 [
-    {
-        "name": "Riska Martha Utami",
-        "role": "Client",
-        "order": "Order DekstopApp - Toko Amartha",
-        "content": "Kok cepet banget, dan hasilnya juga bagus, revisi juga cepet dan semua sesuai dengan yang diinginkan...👌🙏🏻",
-        "rating": 5,
-        "avatar": "RMU",
-        "avatarColor": "bg-blue-500",
-        "date": "June 2025"
+  {
+    "name": "Riska Martha Utami",
+    "role": {
+      "id": "Klien",
+      "en": "Client"
     },
-    {
-        "name": "Desika Khozimatul S.",
-        "role": "Client",
-        "order": "Order App - MyLurah",
-        "content": "Aplikasi yang dibuat cuman dalam waktu 2 minggu sudah jadi, mudah dipahami, desain yang dibuat juga sangat menarik tentunya dan sangat worth it 😍👌🙏🏻",
-        "rating": 5,
-        "avatar": "FA",
-        "avatarColor": "bg-green-500",
-        "date": "July 2025"
+    "order": {
+      "id": "Pesanan Aplikasi Desktop - Toko Amartha",
+      "en": "Desktop App Order - Toko Amartha"
     },
-    {
-        "name": "Alif Nurafifah",
-        "role": "Client",
-        "order": "Order App - Sampah Tuntas",
-        "content": "Tampilan desainnya sederhana tapi sangat bisa dipahami, dan aplikasi berfungsi dengan baik. Keren, Wan.",
-        "rating": 5,
-        "avatar": "AN",
-        "avatarColor": "bg-orange-500",
-        "date": "July 2025"
+    "content": {
+      "id": "Kok cepet banget, dan hasilnya juga bagus, revisi juga cepet dan semua sesuai dengan yang diinginkan...👌🙏🏻",
+      "en": "The work was finished so quickly and the result was great too. Revisions were also handled fast and everything matched what I wanted...👌🙏🏻"
     },
-    {
-        "name": "Febriani Nabila",
-        "role": "Client",
-        "order": "Order App - Febri Store",
-        "content": "Aplikasi yang dibuat cuman dalam waktu 2 minggu sudah jadi, mudah dipahami, desain yang dibuat juga sangat menarik tentunya dan sangat worth it 😍👌🙏🏻",
-        "rating": 5,
-        "avatar": "F",
-        "avatarColor": "bg-purple-500",
-        "date": "August 2025"
+    "rating": 5,
+    "avatar": "RMU",
+    "avatarColor": "bg-blue-500",
+    "date": {
+      "id": "Juni 2025",
+      "en": "June 2025"
     }
+  },
+  {
+    "name": "Desika Khozimatul S.",
+    "role": {
+      "id": "Klien",
+      "en": "Client"
+    },
+    "order": {
+      "id": "Pesanan Aplikasi - MyLurah",
+      "en": "App Order - MyLurah"
+    },
+    "content": {
+      "id": "Aplikasi yang dibuat cuman dalam waktu 2 minggu sudah jadi, mudah dipahami, desain yang dibuat juga sangat menarik tentunya dan sangat worth it 😍👌🙏🏻",
+      "en": "The application was completed in just 2 weeks, easy to understand, and the design was very attractive. It was absolutely worth it 😍👌🙏🏻"
+    },
+    "rating": 5,
+    "avatar": "FA",
+    "avatarColor": "bg-green-500",
+    "date": {
+      "id": "Juli 2025",
+      "en": "July 2025"
+    }
+  },
+  {
+    "name": "Alif Nurafifah",
+    "role": {
+      "id": "Klien",
+      "en": "Client"
+    },
+    "order": {
+      "id": "Pesanan Aplikasi - Sampah Tuntas",
+      "en": "App Order - Sampah Tuntas"
+    },
+    "content": {
+      "id": "Tampilan desainnya sederhana tapi sangat bisa dipahami, dan aplikasi berfungsi dengan baik. Keren, Wan.",
+      "en": "The design looks simple but is very easy to understand, and the app works really well. Great job, Wan."
+    },
+    "rating": 5,
+    "avatar": "AN",
+    "avatarColor": "bg-orange-500",
+    "date": {
+      "id": "Juli 2025",
+      "en": "July 2025"
+    }
+  },
+  {
+    "name": "Febriani Nabila",
+    "role": {
+      "id": "Klien",
+      "en": "Client"
+    },
+    "order": {
+      "id": "Pesanan Aplikasi - Febri Store",
+      "en": "App Order - Febri Store"
+    },
+    "content": {
+      "id": "Aplikasi yang dibuat cuman dalam waktu 2 minggu sudah jadi, mudah dipahami, desain yang dibuat juga sangat menarik tentunya dan sangat worth it 😍👌🙏🏻",
+      "en": "The application was completed in only 2 weeks, easy to understand, and the design was very attractive. Definitely worth it 😍👌🙏🏻"
+    },
+    "rating": 5,
+    "avatar": "F",
+    "avatarColor": "bg-purple-500",
+    "date": {
+      "id": "Agustus 2025",
+      "en": "August 2025"
+    }
+  }
 ]

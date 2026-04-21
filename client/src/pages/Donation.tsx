@@ -3,8 +3,10 @@ import { Input } from "@/components/ui/input";
 import { Heart, Rocket, HandHeart } from "lucide-react";
 import Sidebar from "@/components/Sidebar";
 import MobileHeader from "@/components/MobileHeader";
-import { useLocation } from "wouter";
 import { useEffect, useState } from "react";
+import { useLanguage } from "../contexts/LanguageContext";
+import { usePageMeta } from "../hooks/use-page-meta";
+import { useLocation } from "wouter";
 
 export default function DonationPage() {
   const [activeSection, setActiveSection] = useState("donation");
@@ -12,6 +14,10 @@ export default function DonationPage() {
   const [customAmount, setCustomAmount] = useState<string>("");
   const [showSuccess, setShowSuccess] = useState(false);
   const [showCustomInput, setShowCustomInput] = useState(false);
+  const { language, t } = useLanguage();
+  const [, setLocation] = useLocation();
+
+  usePageMeta(t("page.donation"));
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,8 +47,7 @@ export default function DonationPage() {
       // Already on donation page
       return;
     }
-    // Navigate back to home page
-    window.location.href = "/";
+    setLocation("/");
   };
 
   const predefinedAmounts = [
@@ -73,13 +78,14 @@ export default function DonationPage() {
 
   const getSelectedAmountValue = () => {
     if (selectedAmount) return selectedAmount;
-    if (customAmount) return `Rp ${parseInt(customAmount).toLocaleString()}`;
+    if (customAmount) {
+      return `Rp ${parseInt(customAmount, 10).toLocaleString(language === "id" ? "id-ID" : "en-US")}`;
+    }
     return "";
   };
 
   return (
     <div className="bg-gray-50 dark:bg-gray-900 font-inter transition-colors">
-      <title>Kurniawan Dwi Saputra - {activeSection}</title>
       <Sidebar activeSection={activeSection} onNavigate={scrollToSection} />
       <MobileHeader
         onNavigate={scrollToSection}
@@ -96,11 +102,10 @@ export default function DonationPage() {
                   <Heart className="w-10 h-10 text-white fill-current" />
                 </div>
                 <h1 className="mb-4 text-4xl font-bold tracking-tight text-blue-600 dark:text-blue-400">
-                  Dukung Perjalanan Saya
+                  {t("donation.title")}
                 </h1>
                 <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                  Setiap dukungan dari Anda sangat berarti untuk membantu saya
-                  terus berkarya dan berbagi manfaat untuk banyak orang
+                  {t("donation.description")}
                 </p>
               </div>
             </div>
@@ -108,10 +113,10 @@ export default function DonationPage() {
             {/* Donation Form */}
             <div className="bg-white dark:bg-gray-700 rounded-2xl shadow-lg p-8 max-w-2xl mx-auto">
               <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2 text-center">
-                Berikan Dukungan
+                {t("donation.form.title")}
               </h2>
               <p className="text-gray-600 dark:text-gray-300 text-center mb-8">
-                Pilih nominal yang sesuai dengan kemampuan Anda
+                {t("donation.form.description")}
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -121,17 +126,16 @@ export default function DonationPage() {
                     htmlFor="name"
                     className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                   >
-                    Nama Anda
+                    {t("donation.form.name")}
                   </label>
                   <Input
                     id="name"
                     type="text"
-                    placeholder="Masukkan nama Anda"
+                    placeholder={t("donation.form.name_placeholder")}
                     className="w-full"
                   />
                   <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                    Opsional. Jika kosong, akan ditampilkan sebagai "Hamba
-                    Allah"
+                    {t("donation.form.name_hint")}
                   </p>
                 </div>
 
@@ -141,12 +145,12 @@ export default function DonationPage() {
                     htmlFor="email"
                     className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                   >
-                    Email
+                    {t("donation.form.email")}
                   </label>
                   <Input
                     id="email"
                     type="email"
-                    placeholder="email@example.com"
+                    placeholder={t("donation.form.email_placeholder")}
                     className="w-full"
                     required
                   />
@@ -155,10 +159,10 @@ export default function DonationPage() {
                 {/* Amount Selection */}
                 <div>
                   <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
-                    Pilih Nominal Dukungan
+                    {t("donation.form.amount_title")}
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-4">
-                    Setiap nominal sangat berarti bagi saya
+                    {t("donation.form.amount_description")}
                   </p>
 
                   {/* Predefined Amounts */}
@@ -194,7 +198,7 @@ export default function DonationPage() {
                       }`}
                     >
                       <Heart className="w-5 h-5 text-red-500" />
-                      <span className="font-semibold">Nominal Lainnya</span>
+                      <span className="font-semibold">{t("donation.form.custom_amount")}</span>
                     </button>
                   </div>
 
@@ -203,7 +207,7 @@ export default function DonationPage() {
                     <div className="transition-all duration-300">
                       <Input
                         type="number"
-                        placeholder="Masukkan nominal (min. 10.000)"
+                        placeholder={t("donation.form.custom_amount_placeholder")}
                         value={customAmount}
                         onChange={(e) =>
                           handleCustomAmountChange(e.target.value)
@@ -222,7 +226,7 @@ export default function DonationPage() {
                   disabled={!selectedAmount && !customAmount}
                 >
                   <Rocket className="w-5 h-5 mr-2" />
-                  Kirim Dukungan
+                  {t("donation.form.submit")}
                 </Button>
               </form>
             </div>
@@ -234,11 +238,10 @@ export default function DonationPage() {
                   <HandHeart className="w-8 h-8 text-yellow-500" />
                 </div>
                 <h3 className="text-xl font-semibold text-green-800 dark:text-green-200 mb-2">
-                  Terima Kasih!
+                  {t("donation.success_title")}
                 </h3>
                 <p className="text-green-700 dark:text-green-300">
-                  Setiap dukungan Anda sangat berarti dan membantu saya untuk
-                  terus berkarya
+                  {t("donation.success_description")}
                 </p>
               </div>
             )}
@@ -246,7 +249,7 @@ export default function DonationPage() {
             {/* Additional Info */}
             <div className="mt-16 text-center">
               <p className="text-gray-600 dark:text-gray-300 mb-4">
-                Dukungan Anda akan digunakan untuk:
+                {t("donation.usage_title")}
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl mx-auto">
                 <div className="text-center">
@@ -254,10 +257,10 @@ export default function DonationPage() {
                     <Heart className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                   </div>
                   <h4 className="font-medium text-gray-900 dark:text-white mb-2">
-                    Pengembangan Konten
+                    {t("donation.usage.content_title")}
                   </h4>
                   <p className="text-sm text-gray-600 dark:text-gray-400">
-                    Membuat tutorial dan artikel berkualitas
+                    {t("donation.usage.content_description")}
                   </p>
                 </div>
                 <div className="text-center">
@@ -265,10 +268,10 @@ export default function DonationPage() {
                     <Rocket className="w-6 h-6 text-green-600 dark:text-green-400" />
                   </div>
                   <h4 className="font-medium text-gray-900 dark:text-white mb-2">
-                    Proyek Open Source
+                    {t("donation.usage.opensource_title")}
                   </h4>
                   <p className="text-sm text-gray-600 dark:text-gray-400">
-                    Membangun tools yang bermanfaat
+                    {t("donation.usage.opensource_description")}
                   </p>
                 </div>
                 <div className="text-center">
@@ -276,10 +279,10 @@ export default function DonationPage() {
                     <HandHeart className="w-6 h-6 text-purple-600 dark:text-purple-400" />
                   </div>
                   <h4 className="font-medium text-gray-900 dark:text-white mb-2">
-                    Komunitas
+                    {t("donation.usage.community_title")}
                   </h4>
                   <p className="text-sm text-gray-600 dark:text-gray-400">
-                    Mendukung developer pemula
+                    {t("donation.usage.community_description")}
                   </p>
                 </div>
               </div>

@@ -1,111 +1,155 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, MapPin } from "lucide-react";
+import projectsData from "@/data/projects.json";
+import { useEffect, useState, useMemo } from "react";
+import { useLocation } from "wouter";
+import ProjectDetailDialog from "@/components/ProjectDetailDialog";
+
+import { LocalizedText, useLanguage } from "../../contexts/LanguageContext";
+
+// Helper to get color for tech badges
+const getTechColor = (tech: string) => {
+  const colors: Record<string, string> = {
+    "React Native": "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300",
+    "Expo": "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300",
+    "Firebase": "bg-orange-100 text-orange-700 dark:bg-orange-900 dark:text-orange-300",
+    "Flutter": "bg-sky-100 text-sky-700 dark:bg-sky-900 dark:text-sky-300",
+    "Dart": "bg-cyan-100 text-cyan-700 dark:bg-cyan-900 dark:text-cyan-300",
+    "VueJS": "bg-emerald-100 text-emerald-700 dark:bg-emerald-900 dark:text-emerald-300",
+    "Tailwind CSS": "bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300",
+    "React Vite": "bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300",
+    "Java": "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300",
+  };
+  return colors[tech] || "bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300";
+};
+
+interface Project {
+  title: string;
+  description: LocalizedText;
+  image: string;
+  images?: string[];
+  technologies: string[];
+  category: string;
+  type: string;
+  demo?: string;
+}
 
 export default function Experience() {
-  const projects = [
-    {
-      title: "Sampah Tuntas",
-      description:
-        "Sebuah aplikasi digital untuk pelaporan adanya sampah di sekitar kita dari laporan warga dengan menggunakan teknologi Expo dan posisi GPS untuk mengetahui lokasi sampah.",
-      image: "/assets/projects/mobile/sampah-tuntas/sampah_tuntas.jpg",
-      tags: [
-        {
-          name: "React Native",
-          color: "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300",
-        },
-        {
-          name: "Expo",
-          color:
-            "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300",
-        },
-        {
-          name: "Firebase",
-          color:
-            "bg-orange-100 text-orange-700 dark:bg-orange-900 dark:text-orange-300",
-        },
-      ],
-    },
-    {
-      title: "Febri Store",
-      description:
-        "Sebuah aplikasi digital untuk menjual produk kebutuhan sehari-hari dengan menggunakan teknologi React Native dan Firebase.",
-      image: "/assets/projects/mobile/febri-store/FebriStore.jpg",
-      tags: [
-        {
-          name: "React Native",
-          color: "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300",
-        },
-        {
-          name: "Expo",
-          color:
-            "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300",
-        },
-        {
-          name: "Firebase",
-          color:
-            "bg-orange-100 text-orange-700 dark:bg-orange-900 dark:text-orange-300",
-        },
-      ],
-    },
-    {
-      title: "MyLurah",
-      description:
-        "Sebuah aplikasi digital untuk membantu warga dalam mengakses informasi terkait pemerintahan daerah dengan menggunakan teknologi React Native dan Firebase.",
-      image: "/assets/projects/mobile/mylurah/MyLurah.jpg",
-      tags: [
-        {
-          name: "React Native",
-          color: "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300",
-        },
-        {
-          name: "Expo",
-          color:
-            "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300",
-        },
-        {
-          name: "Firebase",
-          color:
-            "bg-orange-100 text-orange-700 dark:bg-orange-900 dark:text-orange-300",
-        },
-      ],
-    },
-  ];
+  const [freelanceProjects, setFreelanceProjects] = useState<Project[]>([]);
+  const [adminProjects, setAdminProjects] = useState<Project[]>([]);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const { language, t, localize } = useLanguage();
+
+  useEffect(() => {
+    // Filter projects by type
+    const allProjects = projectsData as Project[];
+    const freelance = allProjects.filter(p => p.type === "Freelance");
+    const admin = allProjects.filter(p => p.type === "Admin Website");
+
+    // Pick 3 random freelance projects
+    const shuffledFreelance = [...freelance].sort(() => 0.5 - Math.random());
+    setFreelanceProjects(shuffledFreelance.slice(0, 3));
+
+    // Show all admin projects
+    setAdminProjects(admin);
+  }, []);
+
+  const formatProject = (p: Project) => ({
+    ...p,
+    tags: p.technologies.map((tech: string) => ({
+      name: tech,
+      color: getTechColor(tech)
+    }))
+  });
+
+  const displayFreelance = useMemo(() => freelanceProjects.map(formatProject), [freelanceProjects, language]);
+  const displayAdmin = useMemo(() => adminProjects.map(formatProject), [adminProjects, language]);
+
+  const [, setLocation] = useLocation();
 
   return (
     <section id="experience" className="bg-gray-50 dark:bg-gray-900 py-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-          Pengalaman
+          {t("experience.title")}
         </h2>
         <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-          Setiap proyek memberikan cerita, dan di sini adalah perjalanan saya.
-          Dari menciptakan solusi inovatif hingga menghadapi tantangan nyata,
-          pengalaman-pengalaman ini telah membentuk saya menjadi seorang
-          pengembang yang saya adalah hari ini.
+          {t("experience.description")}
         </p>
 
+        {/* Admin Website Section */}
+        {displayAdmin.length > 0 && (
+          <div className="mb-16">
+            <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-8">
+              <span className="text-gray-400 mr-2">•</span>
+              {t("experience.admin_website")}
+              <span className="text-sm font-normal text-gray-500 dark:text-gray-400 ml-4">
+                2025 - {t("experience.present")}
+              </span>
+            </h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {displayAdmin.map((project, index) => (
+                <div
+                  key={index}
+                  onClick={() => setSelectedProject(project as any)}
+                  className="bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer border dark:border-gray-700"
+                >
+                  <div className="p-4">
+                    <div className="relative overflow-hidden rounded-lg mb-4 aspect-video">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-300 hover:scale-105 bg-gray-50 dark:bg-gray-700"
+                      />
+                    </div>
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+                      {project.title}
+                    </h4>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+                      {localize(project.description)}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag, tagIndex) => (
+                        <Badge
+                          key={tagIndex}
+                          className={`${tag.color} text-xs rounded-full font-medium`}
+                        >
+                          {tag.name}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Freelance Section */}
         <div className="mb-16">
           <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-8">
             <span className="text-gray-400 mr-2">•</span>
-            Freelance
+            {t("experience.freelance")}
             <span className="text-sm font-normal text-gray-500 dark:text-gray-400 ml-4">
-              2025 - now
+              2025 - {t("experience.present")}
             </span>
           </h3>
 
-          {/* Projects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
+            {displayFreelance.map((project, index) => (
               <div
                 key={index}
-                className="bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition-shadow border dark:border-gray-700"
+                onClick={() => setSelectedProject(project as any)}
+                className="bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition-all cursor-pointer border dark:border-gray-700"
               >
                 <div className="p-4">
                   <div className="relative overflow-hidden rounded-lg mb-4 aspect-video">
                     <img
                       src={project.image}
                       alt={project.title}
+                      loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-300 hover:scale-105 bg-gray-50 dark:bg-gray-700"
                     />
                   </div>
@@ -113,7 +157,7 @@ export default function Experience() {
                     {project.title}
                   </h4>
                   <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
-                    {project.description}
+                    {localize(project.description)}
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag, tagIndex) => (
@@ -130,114 +174,23 @@ export default function Experience() {
             ))}
           </div>
 
-          {/* Featured project*/}
-          <div className="mt-8 bg-white dark:bg-gray-800 rounded-xl shadow-sm border dark:border-gray-700">
-            <div className="p-6">
-              <div className="flex flex-col lg:flex-row gap-8">
-                <div className="lg:w-1/2">
-                  <div className="relative overflow-hidden rounded-lg aspect-video lg:aspect-[4/3]">
-                    <img
-                      src="/assets/projects/mobile/e-skuultime/E-SkuulTime.png"
-                      alt="Educational website with colorful design"
-                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105 bg-gray-50 dark:bg-gray-700"
-                    />
-                  </div>
-                </div>
-                <div className="lg:w-1/2">
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
-                    App Development - E-SkuulTime
-                  </h4>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
-                    Januari 2025 - April 2025
-                  </p>
-                  <p className="text-gray-600 dark:text-gray-300 mb-6">
-                    Proyek ini adalah sebuah aplikasi mobile yang dirancang
-                    untuk menyelesaikan studi kasus TA alias Tugas Akhir saya,
-                    aplikasi ini bisa berguna untuk sistem penjadwalan pelajaran
-                    sekolah, petugas bisa mengatur jadwal pelajaran, dan siswa
-                    bisa melihat jadwal pelajaran, termasuk guru bisa melihat
-                    jadwal mengajar mereka.
-                  </p>
-                  <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
-                    <span className="flex items-center gap-1">
-                      <MapPin className="w-4 h-4" />
-                      Remote
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <MapPin className="w-4 h-4" />
-                      Brebes, Indonesia
-                    </span>
-                  </div>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <Badge className="bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300 text-xs rounded-full font-medium">
-                      React Native
-                    </Badge>
-                    <Badge className="bg-teal-100 text-teal-700 dark:bg-teal-900 dark:text-teal-300 text-xs rounded-full font-medium">
-                      Expo
-                    </Badge>
-                    <Badge className="bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 text-xs rounded-full font-medium">
-                      Firebase
-                    </Badge>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="mt-8 bg-white dark:bg-gray-800 rounded-xl shadow-sm border dark:border-gray-700">
-            <div className="p-6">
-              <div className="flex flex-col lg:flex-row gap-8">
-                <div className="lg:w-1/2">
-                  <div className="relative overflow-hidden rounded-lg aspect-video lg:aspect-[4/3]">
-                    <img
-                      src="/assets/projects/mobile/absen-app/absen-app.png"
-                      alt="Educational website with colorful design"
-                      className="w-full h-full object-cover sm:object-cover transition-transform duration-300 hover:scale-105 bg-gray-50 dark:bg-gray-700"
-                    />
-                  </div>
-                </div>
-                <div className="lg:w-1/2">
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
-                    Admin Website - HR Group
-                  </h4>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
-                    Januari 2025 - April 2025
-                  </p>
-                  <p className="text-gray-600 dark:text-gray-300 mb-6">
-                    Proyek ini adalah sebuah aplikasi mobile yang dirancang
-                    untuk menyelesaikan studi kasus TA alias Tugas Akhir saya,
-                    aplikasi ini bisa berguna untuk sistem penjadwalan pelajaran
-                    sekolah, petugas bisa mengatur jadwal pelajaran, dan siswa
-                    bisa melihat jadwal pelajaran, termasuk guru bisa melihat
-                    jadwal mengajar mereka.
-                  </p>
-                  <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
-                    <span className="flex items-center gap-1">
-                      <MapPin className="w-4 h-4" />
-                      Office
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <MapPin className="w-4 h-4" />
-                      Brebes, Indonesia
-                    </span>
-                  </div>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <Badge className="bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300 text-xs rounded-full font-medium">
-                      React Native
-                    </Badge>
-                    <Badge className="bg-teal-100 text-teal-700 dark:bg-teal-900 dark:text-teal-300 text-xs rounded-full font-medium">
-                      Expo
-                    </Badge>
-                    <Badge className="bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 text-xs rounded-full font-medium">
-                      Firebase
-                    </Badge>
-                  </div>
-
-                </div>
-              </div>
-            </div>
+          <div className="mt-10 text-center">
+            <Button
+              onClick={() => setLocation("/portfolio")}
+              variant="outline"
+              className="rounded-full px-8 dark:border-gray-700 dark:text-gray-300 hover:bg-teal-50 dark:hover:bg-teal-900/20 transition-all duration-300"
+            >
+              {t("experience.see_all")}
+            </Button>
           </div>
         </div>
+
+        {/* Project Detail Dialog */}
+        <ProjectDetailDialog
+          project={selectedProject}
+          isOpen={!!selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
       </div>
     </section>
   );

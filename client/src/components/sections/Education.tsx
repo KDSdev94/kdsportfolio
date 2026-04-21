@@ -1,16 +1,17 @@
-import { GraduationCap, Presentation, Trophy, Medal } from "lucide-react";
+import { GraduationCap } from "lucide-react";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 export default function Education() {
+  const { t } = useLanguage();
+
   return (
     <section id="education" className="bg-white dark:bg-gray-800 py-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-          Riwayat Pendidikan
+          {t("education.title")}
         </h2>
         <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-          Pendidikan adalah fondasi dari pertumbuhan. Berikut adalah riwayat
-          pendidikan saya, pengetahuan dan keterampilan yang telah memotivasi
-          saya untuk berkembang dalam teknologi dan inovasi.
+          {t("education.description")}
         </p>
 
         <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-8">
@@ -21,13 +22,13 @@ export default function Education() {
               </div>
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                  Politeknik Pancasakti Global
+                  {t("education.item1.school")}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  Sistem Informasi Visual
+                  {t("education.item1.major")}
                 </p>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
-                  IPK: 3.65
+                  {t("education.gpa_label")}: 3.65
                 </p>
               </div>
             </div>
@@ -45,10 +46,10 @@ export default function Education() {
               </div>
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                  SMA Negeri 2 Brebes
+                  {t("education.item2.school")}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300">
-                  Ilmu Pengetahuan Sosial
+                  {t("education.item2.major")}
                 </p>
               </div>
             </div>

@@ -2,7 +2,6 @@ import {
   IoHomeOutline,
   IoBriefcaseOutline,
   IoStarOutline,
-  IoHeartOutline,
   IoMailOutline,
   IoLogoGithub,
   IoLogoInstagram,
@@ -12,6 +11,7 @@ import { FaSun, FaMoon, FaTelegram, FaWhatsapp } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 
 import { useTheme } from "./ThemeProvider";
+import { useLanguage } from "../contexts/LanguageContext";
 import { useLocation } from "wouter";
 import socialsData from "../data/socials.json";
 
@@ -22,14 +22,14 @@ interface SidebarProps {
 
 export default function Sidebar({ activeSection, onNavigate }: SidebarProps) {
   const { theme, toggleTheme } = useTheme();
+  const { language, setLanguage, t } = useLanguage();
   const [, setLocation] = useLocation();
 
   const navItems = [
-    { id: "introduction", label: "Home", icon: IoHomeOutline },
-    { id: "portfolio", label: "Portfolio", icon: IoBriefcaseOutline },
-    { id: "testimonials", label: "Testimoni", icon: IoStarOutline },
-    { id: "contact", label: "Kontak Saya", icon: IoMailOutline },
-    // { id: "donation", label: "Donasi", icon: IoHeartOutline },
+    { id: "introduction", label: t("nav.home"), icon: IoHomeOutline },
+    { id: "portfolio", label: t("nav.portfolio"), icon: IoBriefcaseOutline },
+    { id: "testimonials", label: t("nav.testimonials"), icon: IoStarOutline },
+    { id: "contact", label: t("nav.contact"), icon: IoMailOutline },
   ];
 
   const handleNavigation = (itemId: string) => {
@@ -41,8 +41,6 @@ export default function Sidebar({ activeSection, onNavigate }: SidebarProps) {
       setLocation("/");
     } else if (itemId === "contact") {
       setLocation("/contact");
-      // } else if (itemId === "donation") {
-      //   setLocation("/donation");
     } else {
       onNavigate(itemId);
     }
@@ -72,45 +70,76 @@ export default function Sidebar({ activeSection, onNavigate }: SidebarProps) {
     >
       {/* Profile Section */}
       <div
-        className={`p-4 border-b ${theme === "dark" ? "border-gray-700" : "border-gray-200"
+        className={`p-6 border-b ${theme === "dark" ? "border-white/10" : "border-gray-100"
           }`}
       >
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <img
-              src="/assets/logo.png"
-              alt="Kurniawan Dwi Saputra"
-              className="w-12 h-12 rounded-full object-cover"
-            />
-            <div>
-              <h3
-                className={`font-semibold ${theme === "dark" ? "text-white" : "text-gray-900"
+        <div className="flex flex-col space-y-4">
+          <div className="flex items-center justify-between">
+            <div className="relative group">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
+              <img
+                src="/assets/logo.png"
+                alt="Kurniawan Dwi Saputra"
+                loading="lazy"
+                className="relative w-14 h-14 rounded-full object-cover border-2 border-white dark:border-gray-800 shadow-sm"
+              />
+              <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-white dark:border-gray-900 rounded-full shadow-sm"></div>
+            </div>
+            <div className="flex items-center space-x-2">
+              {/* Language Switch */}
+              <button
+                onClick={() => setLanguage(language === "id" ? "en" : "id")}
+                className={`w-9 h-9 rounded-full transition-all flex items-center justify-center text-[10px] font-bold border ${theme === "dark"
+                  ? "border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white hover:border-gray-600 shadow-sm"
+                  : "border-gray-200 text-gray-600 hover:bg-white hover:text-gray-900 hover:border-gray-300 shadow-sm"
                   }`}
+                title={language === "id" ? t("common.switch_to_english") : t("common.switch_to_indonesian")}
               >
-                Kurniawan Dwi Saputra
-              </h3>
-              <p
-                className={`text-sm ${theme === "dark" ? "text-gray-300" : "text-gray-600"
+                {language.toUpperCase()}
+              </button>
+              {/* Theme Toggle Button */}
+              <button
+                onClick={toggleTheme}
+                className={`w-9 h-9 rounded-full transition-all flex items-center justify-center border ${theme === "dark"
+                  ? "border-gray-700 text-gray-300 hover:bg-gray-800 hover:text-white hover:border-gray-600 shadow-sm"
+                  : "border-gray-200 text-gray-600 hover:bg-white hover:text-gray-900 hover:border-gray-300 shadow-sm"
                   }`}
+                aria-label={t("common.toggle_theme")}
               >
-                Admin Website & <br />
-                Designer Grafis
-              </p>
+                {theme === "dark" ? (
+                  <FaSun className="w-3.5 h-3.5 text-yellow-400" />
+                ) : (
+                  <FaMoon className="w-3.5 h-3.5 text-gray-600" />
+                )}
+              </button>
             </div>
           </div>
-          {/* Theme Toggle Button */}
-          <button
-            onClick={toggleTheme}
-            className={`p-2 rounded-lg transition-colors ${theme === "dark" ? "hover:bg-gray-700" : "hover:bg-gray-100"
-              }`}
-            aria-label="Toggle theme"
-          >
-            {theme === "dark" ? (
-              <FaSun className="w-5 h-5 text-yellow-400" />
-            ) : (
-              <FaMoon className="w-5 h-5 text-gray-600" />
-            )}
-          </button>
+          <div>
+            <h3
+              className={`text-lg font-bold tracking-tight mb-1.5 ${theme === "dark" ? "text-white" : "text-gray-900"
+                }`}
+            >
+              Kurniawan Dwi Saputra
+            </h3>
+            <div className="flex flex-wrap gap-1.5">
+              <span
+                className={`text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full ${theme === "dark"
+                  ? "bg-blue-500/10 text-blue-400 border border-blue-500/20"
+                  : "bg-blue-50 text-blue-600 border border-blue-100"
+                  }`}
+              >
+                {t("role.admin")}
+              </span>
+              <span
+                className={`text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full ${theme === "dark"
+                  ? "bg-purple-500/10 text-purple-400 border border-purple-500/20"
+                  : "bg-purple-50 text-purple-600 border border-purple-100"
+                  }`}
+              >
+                {t("role.designer")}
+              </span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -146,7 +175,7 @@ export default function Sidebar({ activeSection, onNavigate }: SidebarProps) {
           className={`text-xs mb-4 ${theme === "dark" ? "text-gray-400" : "text-gray-500"
             }`}
         >
-          SOCIAL MEDIA
+          {t("nav.social_media")}
         </p>
         <div className="grid grid-cols-6 gap-3">
           {socialLinks.map((social, index) => {

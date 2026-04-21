@@ -5,7 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { FaWhatsapp, FaGithub, FaTelegram, FaLinkedin } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
 
-import { SiGmail, SiYoutube, SiInstagram, SiGooglemaps } from "react-icons/si";
+import { SiGmail, SiInstagram, SiGooglemaps } from "react-icons/si";
 
 import Sidebar from "@/components/Sidebar";
 import MobileHeader from "@/components/MobileHeader";
@@ -13,11 +13,18 @@ import emailjs from "@emailjs/browser";
 import { useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import socialsData from "../data/socials.json";
+import { useLanguage } from "../contexts/LanguageContext";
+import { usePageMeta } from "../hooks/use-page-meta";
+import { useLocation } from "wouter";
 
 export default function ContactPage() {
   const [activeSection, setActiveSection] = useState("contact");
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { t } = useLanguage();
+  const [, setLocation] = useLocation();
+
+  usePageMeta(t("page.contact"));
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -51,23 +58,21 @@ export default function ContactPage() {
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
       if (!serviceId || !templateId || !publicKey) {
-        throw new Error("Email service configuration is missing.");
+        throw new Error("missing-email-config");
       }
 
       await emailjs.send(serviceId, templateId, payload, publicKey);
 
       toast({
-        title: "Message sent",
-        description: "Thank you! I will reply as soon as possible.",
+        title: t("contact.toast.success_title"),
+        description: t("contact.toast.success_description"),
       });
       form.reset();
     } catch (err) {
       console.error(err);
-      const message = err instanceof Error ? err.message : String(err);
       toast({
-        title: "Failed to send",
-        description:
-          message || "Please try again later or contact via WhatsApp.",
+        title: t("contact.toast.error_title"),
+        description: t("contact.toast.error_description"),
       });
     } finally {
       setIsSubmitting(false);
@@ -101,26 +106,26 @@ export default function ContactPage() {
     if (sectionId === "contact") {
       return;
     }
-    window.location.href = "/";
+    setLocation("/");
   };
 
   const contactInfo = [
     {
       icon: SiGmail,
-      title: "Email",
+      title: t("contact.info.email"),
       value: "kdwisaputra04@gmail.com",
       link: "mailto:kdwisaputra04@gmail.com",
     },
     {
       icon: FaWhatsapp,
-      title: "Whatsapp",
+      title: t("contact.info.whatsapp"),
       value: "+62 821-3452-8638",
       link: "https://wa.me/6282134528638",
     },
     {
       icon: SiGooglemaps,
-      title: "Lokasi",
-      value: "Brebes, Jawa Tengah, Indonesia",
+      title: t("contact.info.location"),
+      value: t("contact.location_value"),
       link: "https://maps.app.goo.gl/p8kCFVPh4dXbhcU68",
     },
   ];
@@ -144,7 +149,6 @@ export default function ContactPage() {
 
   return (
     <div className="bg-gray-50 dark:bg-gray-900 font-inter transition-colors">
-      <title>Kurniawan Dwi Saputra - {activeSection}</title>
       <Sidebar activeSection={activeSection} onNavigate={scrollToSection} />
       <MobileHeader
         onNavigate={scrollToSection}
@@ -157,15 +161,12 @@ export default function ContactPage() {
             {/* Header Section */}
             <div className="mb-12">
               <h1 className="mb-2 text-3xl font-bold tracking-tight text-slate-800 dark:text-white">
-                Kontak Saya
+                {t("contact.title")}
               </h1>
               <div className="mb-6 h-1 w-16 bg-slate-200 dark:bg-slate-700"></div>
 
               <p className="text-lg text-gray-600 dark:text-gray-300 max-w-6xl leading-relaxed">
-                Siap untuk memulai proyek Anda? Ayo diskusikan bagaimana saya
-                dapat membantu mengubah ide Anda menjadi kenyataan. Silakan
-                menghubungi saya melalui saluran berikut atau isi formulir
-                kontak.
+                {t("contact.description")}
               </p>
             </div>
 
@@ -173,7 +174,7 @@ export default function ContactPage() {
               {/* Contact Information */}
               <div>
                 <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
-                  Get In Touch
+                  {t("contact.get_in_touch")}
                 </h2>
 
                 {/* Contact Details */}
@@ -204,7 +205,7 @@ export default function ContactPage() {
                 {/* Social Media */}
                 <div>
                   <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
-                    Follow Me
+                    {t("contact.follow_me")}
                   </h3>
                   <div className="flex space-x-4">
                     {socialLinks.map((social, index) => {
@@ -229,7 +230,7 @@ export default function ContactPage() {
               {/* Contact Form */}
               <div>
                 <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
-                  Send Message
+                  {t("contact.send_message")}
                 </h2>
 
                 <form className="space-y-6" onSubmit={handleSubmit}>
@@ -239,13 +240,13 @@ export default function ContactPage() {
                         htmlFor="firstName"
                         className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                       >
-                        First Name
+                        {t("contact.form.first_name")}
                       </label>
                       <Input
                         id="firstName"
                         name="first_name"
                         type="text"
-                        placeholder="Input your first name here"
+                        placeholder={t("contact.form.first_name_placeholder")}
                         className="w-full"
                         required
                       />
@@ -255,13 +256,13 @@ export default function ContactPage() {
                         htmlFor="lastName"
                         className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                       >
-                        Last Name
+                        {t("contact.form.last_name")}
                       </label>
                       <Input
                         id="lastName"
                         name="last_name"
                         type="text"
-                        placeholder="Input your last name here"
+                        placeholder={t("contact.form.last_name_placeholder")}
                         className="w-full"
                       />
                     </div>
@@ -272,13 +273,13 @@ export default function ContactPage() {
                       htmlFor="email"
                       className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                     >
-                      Email
+                      {t("contact.form.email")}
                     </label>
                     <Input
                       id="email"
                       name="from_email"
                       type="email"
-                      placeholder="Input email address"
+                      placeholder={t("contact.form.email_placeholder")}
                       className="w-full"
                       required
                     />
@@ -289,13 +290,13 @@ export default function ContactPage() {
                       htmlFor="subject"
                       className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                     >
-                      Subject
+                      {t("contact.form.subject")}
                     </label>
                     <Input
                       id="subject"
                       name="subject"
                       type="text"
-                      placeholder="Project Inquiry"
+                      placeholder={t("contact.form.subject_placeholder")}
                       className="w-full"
                       required
                     />
@@ -306,13 +307,13 @@ export default function ContactPage() {
                       htmlFor="message"
                       className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
                     >
-                      Message
+                      {t("contact.form.message")}
                     </label>
                     <Textarea
                       id="message"
                       name="message"
                       rows={5}
-                      placeholder="Tell me about your minds and needs..."
+                      placeholder={t("contact.form.message_placeholder")}
                       className="w-full"
                       required
                     />
@@ -324,7 +325,7 @@ export default function ContactPage() {
                     className="w-full sidebar-dark text-white hover:opacity-90 transition-colors"
                   >
                     <FiSend className="w-4 h-4 mr-2" />
-                    {isSubmitting ? "Sending..." : "Send Message"}
+                    {isSubmitting ? t("contact.form.sending") : t("contact.form.send")}
                   </Button>
                 </form>
               </div>
@@ -333,10 +334,10 @@ export default function ContactPage() {
             {/* Additional Info */}
             <div className="mt-16 text-center">
               <p className="text-gray-600 dark:text-gray-300 mb-4">
-                Saya biasanya merespon dalam 24 jam selama hari kerja.
+                {t("contact.response_time")}
               </p>
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                Ayo buat sesuatu yang luar biasa bersama! 🚀
+                {t("contact.closing")}
               </p>
             </div>
           </div>

@@ -5,9 +5,14 @@ import Introduction from "./sections/Introduction";
 import Experience from "./sections/Experience";
 import Education from "./sections/Education";
 import Skills from "./sections/Skills";
+import { useLanguage } from "../contexts/LanguageContext";
+import { usePageMeta } from "../hooks/use-page-meta";
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("introduction");
+  const { t } = useLanguage();
+
+  usePageMeta(t("page.home"));
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,7 +50,6 @@ export default function Portfolio() {
 
   return (
     <div className="bg-gray-50 dark:bg-gray-900 font-inter transition-colors">
-      <title>Kurniawan Dwi Saputra - {activeSection}</title>
       <Sidebar activeSection={activeSection} onNavigate={scrollToSection} />
       <MobileHeader
         onNavigate={scrollToSection}

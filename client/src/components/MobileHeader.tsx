@@ -7,14 +7,12 @@ import {
   Briefcase,
   Star,
   Mail,
-  Heart,
-  Github,
-  Linkedin,
 } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
+import { useLanguage } from "../contexts/LanguageContext";
 import { useLocation } from "wouter";
 import { FaTelegram, FaWhatsapp } from "react-icons/fa";
-import { IoLogoInstagram } from "react-icons/io5";
+import { IoLogoInstagram, IoLogoGithub, IoLogoLinkedin } from "react-icons/io5";
 import { SiGmail } from "react-icons/si";
 import socialsData from "../data/socials.json";
 
@@ -29,6 +27,7 @@ export default function MobileHeader({
 }: MobileHeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const { language, setLanguage, t } = useLanguage();
   const [, setLocation] = useLocation();
 
   // Custom hamburger icon similar to Tabler's "menu-deep"
@@ -52,19 +51,18 @@ export default function MobileHeader({
   );
 
   const navItems = [
-    { id: "introduction", label: "Home", icon: Home },
-    { id: "portfolio", label: "Portfolio", icon: Briefcase },
-    { id: "testimonials", label: "Testimoni", icon: Star },
-    { id: "contact", label: "Kontak Saya", icon: Mail },
-    // { id: "donation", label: "Donasi", icon: Heart },
+    { id: "introduction", label: t("nav.home"), icon: Home },
+    { id: "portfolio", label: t("nav.portfolio"), icon: Briefcase },
+    { id: "testimonials", label: t("nav.testimonials"), icon: Star },
+    { id: "contact", label: t("nav.contact"), icon: Mail },
   ];
 
   const getSocialIcon = (platform: string) => {
     switch (platform) {
-      case "github": return Github;
+      case "github": return IoLogoGithub;
       case "telegram": return FaTelegram;
       case "instagram": return IoLogoInstagram;
-      case "linkedin": return Linkedin;
+      case "linkedin": return IoLogoLinkedin;
       case "whatsapp": return FaWhatsapp;
       case "gmail": return SiGmail;
       default: return FaTelegram;
@@ -85,8 +83,6 @@ export default function MobileHeader({
       setLocation("/");
     } else if (sectionId === "contact") {
       setLocation("/contact");
-      // } else if (sectionId === "donation") {
-      //   setLocation("/donation");
     } else {
       onNavigate(sectionId);
     }
@@ -100,59 +96,73 @@ export default function MobileHeader({
         : "bg-white border-gray-200"
         }`}
     >
-      <div className="flex items-center justify-between px-4 py-3">
-        <div className="flex items-center space-x-3">
-          <img
-            src="/assets/logo.png"
-            alt="Kurniawan Dwi Saputra"
-            className="w-10 h-10 rounded-full object-cover"
-          />
-          <div>
+      <div className="flex items-center justify-between px-4 py-2.5">
+        <div className="flex items-center space-x-3 min-w-0">
+          <div className="relative flex-shrink-0">
+            <img
+              src="/assets/logo.png"
+              alt="Kurniawan Dwi Saputra"
+              loading="lazy"
+              className="w-10 h-10 rounded-full object-cover border border-gray-100 dark:border-gray-700 shadow-sm"
+            />
+            <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white dark:border-gray-800 rounded-full shadow-sm"></div>
+          </div>
+          <div className="min-w-0">
             <h3
-              className={`font-semibold ${theme === "dark" ? "text-white" : "text-gray-900"
+              className={`font-bold text-sm truncate ${theme === "dark" ? "text-white" : "text-gray-900"
                 }`}
             >
               Kurniawan Dwi Saputra
             </h3>
             <p
-              className={`text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-500"
+              className={`text-[10px] font-medium uppercase tracking-tight truncate ${theme === "dark" ? "text-blue-400" : "text-blue-600"
                 }`}
             >
-              Admin Website &
-              Designer Grafis
+              {t("role.admin")} • {t("role.designer")}
             </p>
           </div>
         </div>
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-1.5 flex-shrink-0">
+          {/* Language Switch */}
+          <button
+            onClick={() => setLanguage(language === "id" ? "en" : "id")}
+            className={`text-[10px] font-bold w-9 h-9 rounded-full transition-all flex items-center justify-center border ${theme === "dark"
+              ? "border-gray-700 text-gray-300 hover:bg-gray-700 hover:text-white"
+              : "border-gray-200 text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+              }`}
+            title={language === "id" ? t("common.switch_to_english") : t("common.switch_to_indonesian")}
+          >
+            {language.toUpperCase()}
+          </button>
           {/* Theme Toggle Button */}
           <button
             onClick={toggleTheme}
-            className={`block cursor-pointer rounded-lg p-2 transition-colors ${theme === "dark"
-              ? "hover:bg-gray-700 text-slate-200"
-              : "hover:bg-gray-100 text-slate-600"
+            className={`w-9 h-9 rounded-full transition-all flex items-center justify-center border ${theme === "dark"
+              ? "border-gray-700 text-slate-300 hover:bg-gray-700"
+              : "border-gray-200 text-slate-600 hover:bg-gray-50"
               }`}
-            aria-label="Toggle theme"
+            aria-label={t("common.toggle_theme")}
           >
             {theme === "dark" ? (
-              <Sun className="w-5 h-5 text-yellow-400" />
+              <Sun className="w-4 h-4 text-yellow-400" />
             ) : (
-              <Moon className="w-5 h-5 text-gray-600" />
+              <Moon className="w-4 h-4 text-gray-600" />
             )}
           </button>
           {/* Menu Toggle Button */}
           <button
-            className={`block cursor-pointer rounded-lg p-3 ${theme === "dark"
+            className={`w-9 h-9 rounded-full flex items-center justify-center transition-all ${theme === "dark"
               ? "text-slate-200 hover:bg-gray-700"
               : "text-slate-600 hover:bg-gray-100"
               }`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Menu"
-            title="Menu"
+            aria-label={t("common.menu")}
+            title={t("common.menu")}
           >
             {isMenuOpen ? (
-              <X className="w-6 h-6" />
+              <X className="w-5 h-5" />
             ) : (
-              <MenuDeepIcon className="w-6 h-6" />
+              <MenuDeepIcon className="w-5 h-5" />
             )}
           </button>
         </div>
@@ -196,7 +206,7 @@ export default function MobileHeader({
               className={`text-xs mb-3 ${theme === "dark" ? "text-gray-400" : "text-gray-500"
                 }`}
             >
-              SOCIAL MEDIA
+              {t("nav.social_media")}
             </p>
             <div className="grid grid-cols-6 gap-3">
               {socialLinks.map((social, index) => {
