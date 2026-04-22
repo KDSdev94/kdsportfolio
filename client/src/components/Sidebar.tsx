@@ -81,9 +81,8 @@ export default function Sidebar({ activeSection, onNavigate }: SidebarProps) {
                 src="/assets/logo.png"
                 alt="Kurniawan Dwi Saputra"
                 loading="lazy"
-                className="relative w-14 h-14 rounded-full object-cover border-2 border-white dark:border-gray-800 shadow-sm"
+                className="relative w-20 h-20 rounded-full object-cover border-2 border-white dark:border-gray-800 shadow-sm"
               />
-              <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-white dark:border-gray-900 rounded-full shadow-sm"></div>
             </div>
             <div className="flex items-center space-x-2">
               {/* Language Switch */}
