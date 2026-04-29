@@ -96,8 +96,8 @@ export default function MobileHeader({
         : "bg-white border-gray-200"
         }`}
     >
-      <div className="flex items-center justify-between px-4 py-2.5">
-        <div className="flex items-center space-x-3 min-w-0">
+      <div className="flex items-center justify-between px-2.5 min-[380px]:px-4 py-2.5">
+        <div className="flex items-center space-x-2 min-[380px]:space-x-3 min-w-0 flex-1">
           <div className="relative flex-shrink-0">
             <img
               src="/assets/logo.png"
@@ -107,22 +107,22 @@ export default function MobileHeader({
             />
             <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white dark:border-gray-800 rounded-full shadow-sm"></div>
           </div>
-          <div className="min-w-0">
+          <div className="min-w-0 flex-1">
             <h3
-              className={`font-bold text-sm truncate ${theme === "dark" ? "text-white" : "text-gray-900"
+              className={`font-bold text-sm leading-tight ${theme === "dark" ? "text-white" : "text-gray-900"
                 }`}
             >
               Kurniawan Dwi Saputra
             </h3>
             <p
-              className={`text-[10px] font-medium uppercase tracking-tight truncate ${theme === "dark" ? "text-blue-400" : "text-blue-600"
+              className={`text-[9px] min-[380px]:text-[10px] font-medium uppercase tracking-tight leading-tight mt-0.5 ${theme === "dark" ? "text-blue-400" : "text-blue-600"
                 }`}
             >
               {t("role.admin")} • {t("role.designer")}
             </p>
           </div>
         </div>
-        <div className="flex items-center space-x-1.5 flex-shrink-0">
+        <div className="flex items-center space-x-1 min-[380px]:space-x-1.5 flex-shrink-0 ml-2">
           {/* Language Switch */}
           <button
             onClick={() => setLanguage(language === "id" ? "en" : "id")}
