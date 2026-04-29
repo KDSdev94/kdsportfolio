@@ -19,25 +19,6 @@
     "type": "Freelance"
   },
   {
-    "title": "Toko Amartha",
-    "description": {
-      "id": "Aplikasi ini dibuat untuk membantu bisnis retail dalam mengelola transaksi, stok barang, dan laporan penjualan dengan tampilan yang modern serta mudah digunakan.",
-      "en": "This application was built to help retail businesses manage transactions, inventory, and sales reports through a modern and easy-to-use interface."
-    },
-    "image": "/assets/projects/desktop/toko-amartha/toko_amartha.png",
-    "images": [
-      "/assets/projects/desktop/toko-amartha/toko_amartha.png",
-      "/assets/projects/desktop/toko-amartha/toko_amartha2.png"
-    ],
-    "technologies": [
-      "Flutter",
-      "Dart",
-      "Hive"
-    ],
-    "category": "Desktop App",
-    "type": "Freelance"
-  },
-  {
     "title": "MyLurah",
     "description": {
       "id": "Aplikasi layanan digital kelurahan yang memudahkan masyarakat dalam mengakses berbagai layanan administrasi dan informasi secara praktis.",
@@ -89,6 +70,21 @@
       "en": "An e-commerce app designed to streamline selling and purchasing with complete features and a user-friendly interface."
     },
     "image": "/assets/projects/mobile/sh-store-brebes/sh-store-brebes.png",
+    "technologies": [
+      "Expo",
+      "React Native",
+      "Firebase"
+    ],
+    "category": "Mobile App",
+    "type": "Freelance"
+  },
+  {
+    "title": "Sahabat Hampers",
+    "description": {
+      "id": "Aplikasi ini membantu para penjual hampers dalam mengelola pesanan, stok barang, dan laporan penjualan dengan tampilan yang modern serta mudah digunakan.",
+      "en": "This application helps hamper sellers manage orders, inventory, and sales reports through a modern and easy-to-use interface."
+    },
+    "image": "/assets/projects/mobile/sahabat-hampers/sahabat-hampers.png",
     "technologies": [
       "Expo",
       "React Native",
@@ -205,6 +201,25 @@
     ],
     "demo": "https://ilham-cell.netlify.app/",
     "category": "Website",
+    "type": "Freelance"
+  },
+  {
+    "title": "Toko Amartha",
+    "description": {
+      "id": "Aplikasi ini dibuat untuk membantu bisnis retail dalam mengelola transaksi, stok barang, dan laporan penjualan dengan tampilan yang modern serta mudah digunakan.",
+      "en": "This application was built to help retail businesses manage transactions, inventory, and sales reports through a modern and easy-to-use interface."
+    },
+    "image": "/assets/projects/desktop/toko-amartha/toko_amartha.png",
+    "images": [
+      "/assets/projects/desktop/toko-amartha/toko_amartha.png",
+      "/assets/projects/desktop/toko-amartha/toko_amartha2.png"
+    ],
+    "technologies": [
+      "Flutter",
+      "Dart",
+      "Hive"
+    ],
+    "category": "Desktop App",
     "type": "Freelance"
   }
 ]
