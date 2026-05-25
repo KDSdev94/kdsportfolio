@@ -33,6 +33,10 @@ export default function Skills() {
       image: "/assets/logo/vue.png",
     },
     {
+      name: "Laravel",
+      image: "/assets/logo/Laravel.png",
+    },
+    {
       name: "Java",
       image: "/assets/logo/java.png",
     },
@@ -52,14 +56,14 @@ export default function Skills() {
           {t("skills.description")}
         </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-6">
+        <div className="grid grid-cols-3 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 md:gap-6">
           {skills.map((skill, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-gray-800 rounded-xl p-6 text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 border dark:border-gray-700"
+              className="bg-white dark:bg-gray-800 rounded-xl p-3 sm:p-4 md:p-6 text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 border dark:border-gray-700"
             >
               <div
-                className="w-16 h-16 bg-gray-50 dark:bg-white rounded-xl flex items-center justify-center mx-auto mb-4 p-3 shadow-inner"
+                className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gray-50 dark:bg-white rounded-xl flex items-center justify-center mx-auto mb-3 md:mb-4 p-2 md:p-3 shadow-inner"
               >
                 <img
                   src={skill.image}
@@ -68,7 +72,7 @@ export default function Skills() {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <h4 className="font-medium text-gray-900 dark:text-white">
+              <h4 className="text-sm sm:text-base font-medium text-gray-900 dark:text-white leading-tight">
                 {skill.name}
               </h4>
             </div>

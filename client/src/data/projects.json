@@ -221,5 +221,27 @@
     ],
     "category": "Desktop App",
     "type": "Freelance"
+  },
+  {
+    "title": "Toko Yasmine",
+    "description": {
+      "id": "Aplikasi desktop kasir untuk Toko Yasmine yang dirancang untuk mempermudah proses penjualan, pencatatan stok, dan pemantauan laporan harian. Sistem ini membantu operasional toko menjadi lebih rapi, cepat, dan efisien melalui antarmuka yang mudah digunakan.",
+      "en": "A desktop point-of-sale application for Toko Yasmine designed to simplify sales processing, stock tracking, and daily reporting. This system helps store operations run in a more organized, faster, and efficient way through an easy-to-use interface."
+    },
+    "image": "/assets/projects/desktop/toko-yasmine/toko_yasmine.png",
+    "images": [
+      "/assets/projects/desktop/toko-yasmine/toko_yasmine.png",
+      "/assets/projects/desktop/toko-yasmine/toko_yasmine2.png",
+      "/assets/projects/desktop/toko-yasmine/toko_yasmine3.png",
+      "/assets/projects/desktop/toko-yasmine/toko_yasmine4.png",
+      "/assets/projects/desktop/toko-yasmine/toko_yasmine5.png"
+    ],
+    "technologies": [
+      "VueJS",
+      "Laravel",
+      "MySQL"
+    ],
+    "category": "Desktop App",
+    "type": "Freelance"
   }
 ]
