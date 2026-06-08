@@ -13,7 +13,7 @@ export default function Introduction() {
 
   const handleResumeDownload = () => {
     const link = document.createElement("a");
-    link.href = "/assets/resume.pdf";
+    link.href = "/assets/CV Kurniawn Dwi Saputra.pdf";
     link.download = "Kurniawan_Dwi_Saputra_Resume.pdf";
     document.body.appendChild(link);
     link.click();

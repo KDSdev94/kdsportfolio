@@ -4,6 +4,7 @@ import MobileHeader from "./MobileHeader";
 import Introduction from "./sections/Introduction";
 import Experience from "./sections/Experience";
 import Education from "./sections/Education";
+import Certificates from "./sections/Certificates";
 import Skills from "./sections/Skills";
 import { useLanguage } from "../contexts/LanguageContext";
 import { usePageMeta } from "../hooks/use-page-meta";
@@ -16,7 +17,7 @@ export default function Portfolio() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["introduction", "experience", "education", "skills"];
+      const sections = ["introduction", "certificates", "experience", "education", "skills"];
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -58,6 +59,7 @@ export default function Portfolio() {
 
       <div className="lg:ml-80 pt-20 lg:pt-0">
         <Introduction />
+        <Certificates preview />
         <Experience />
         <Education />
         <Skills />

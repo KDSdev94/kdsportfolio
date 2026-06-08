@@ -7,6 +7,7 @@ import { ThemeProvider } from "./components/ThemeProvider";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import Portfolio from "./components/Portfolio";
 import PortfolioPage from "./pages/Portfolio";
+import CertificatesPage from "./pages/Certificates";
 import TestimonialsPage from "./pages/Testimonials";
 import ContactPage from "./pages/Contact";
 import DonationPage from "./pages/Donation";
@@ -15,6 +16,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Portfolio} />
+      <Route path="/certificates" component={CertificatesPage} />
       <Route path="/portfolio" component={PortfolioPage} />
       <Route path="/testimonials" component={TestimonialsPage} />
       <Route path="/contact" component={ContactPage} />

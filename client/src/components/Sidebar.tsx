@@ -1,6 +1,7 @@
 import {
   IoHomeOutline,
   IoBriefcaseOutline,
+  IoRibbonOutline,
   IoStarOutline,
   IoMailOutline,
   IoLogoGithub,
@@ -27,6 +28,7 @@ export default function Sidebar({ activeSection, onNavigate }: SidebarProps) {
 
   const navItems = [
     { id: "introduction", label: t("nav.home"), icon: IoHomeOutline },
+    { id: "certificates", label: t("nav.certificates"), icon: IoRibbonOutline },
     { id: "portfolio", label: t("nav.portfolio"), icon: IoBriefcaseOutline },
     { id: "testimonials", label: t("nav.testimonials"), icon: IoStarOutline },
     { id: "contact", label: t("nav.contact"), icon: IoMailOutline },

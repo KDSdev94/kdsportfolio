@@ -4,6 +4,7 @@ import {
   Sun,
   Moon,
   Home,
+  Award,
   Briefcase,
   Star,
   Mail,
@@ -52,6 +53,7 @@ export default function MobileHeader({
 
   const navItems = [
     { id: "introduction", label: t("nav.home"), icon: Home },
+    { id: "certificates", label: t("nav.certificates"), icon: Award },
     { id: "portfolio", label: t("nav.portfolio"), icon: Briefcase },
     { id: "testimonials", label: t("nav.testimonials"), icon: Star },
     { id: "contact", label: t("nav.contact"), icon: Mail },
