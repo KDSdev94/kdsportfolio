@@ -22,7 +22,9 @@ interface Project {
     title: string;
     description: LocalizedText;
     image: string;
+    thumbnail?: string;
     images?: string[];
+    imageThumbnails?: string[];
     technologies: string[];
     category: string;
     demo?: string;
@@ -69,9 +71,11 @@ export default function ProjectDetailDialog({ project, isOpen, onClose }: Projec
                                                 onClick={() => setFullscreenImage(img)}
                                             >
                                                 <img
-                                                    src={img}
+                                                    src={project.imageThumbnails?.[i] ?? img}
                                                     alt={`${project.title} ${i + 1}`}
                                                     loading="lazy"
+                                                    decoding="async"
+                                                    sizes="(min-width: 1024px) 672px, 95vw"
                                                     className="w-full h-full object-cover"
                                                 />
                                                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
@@ -94,9 +98,11 @@ export default function ProjectDetailDialog({ project, isOpen, onClose }: Projec
                                 onClick={() => setFullscreenImage(project.image)}
                             >
                                 <img
-                                    src={project.image}
+                                    src={project.thumbnail ?? project.image}
                                     alt={project.title}
                                     loading="lazy"
+                                    decoding="async"
+                                    sizes="(min-width: 1024px) 672px, 95vw"
                                     className="w-full h-full object-cover"
                                 />
                                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
@@ -156,6 +162,7 @@ export default function ProjectDetailDialog({ project, isOpen, onClose }: Projec
                                 src={fullscreenImage}
                                 alt="Fullscreen focus view"
                                 loading="lazy"
+                                decoding="async"
                                 className="max-w-full max-h-[90vh] object-contain rounded-md"
                             />
                         </div>

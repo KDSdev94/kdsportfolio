@@ -16,7 +16,12 @@
       "Firebase"
     ],
     "category": "Mobile App",
-    "type": "Freelance"
+    "type": "Freelance",
+    "thumbnail": "/assets/projects/thumbs/mobile/e-skuultime/E-SkuulTime.jpg",
+    "imageThumbnails": [
+      "/assets/projects/thumbs/mobile/e-skuultime/E-SkuulTime.jpg",
+      "/assets/projects/thumbs/mobile/e-skuultime/login.jpg"
+    ]
   },
   {
     "title": "MyLurah",
@@ -31,7 +36,8 @@
       "Firebase"
     ],
     "category": "Mobile App",
-    "type": "Freelance"
+    "type": "Freelance",
+    "thumbnail": "/assets/projects/thumbs/mobile/mylurah/mylurah.jpg"
   },
   {
     "title": "Sampah Tuntas",
@@ -46,7 +52,8 @@
       "Firebase"
     ],
     "category": "Mobile App",
-    "type": "Freelance"
+    "type": "Freelance",
+    "thumbnail": "/assets/projects/thumbs/mobile/sampah-tuntas/sampah-tuntas.jpg"
   },
   {
     "title": "Febri Store",
@@ -61,7 +68,8 @@
       "Firebase"
     ],
     "category": "Mobile App",
-    "type": "Freelance"
+    "type": "Freelance",
+    "thumbnail": "/assets/projects/thumbs/mobile/febri-store/febri-store.jpg"
   },
   {
     "title": "SH Store Brebes",
@@ -76,7 +84,8 @@
       "Firebase"
     ],
     "category": "Mobile App",
-    "type": "Freelance"
+    "type": "Freelance",
+    "thumbnail": "/assets/projects/thumbs/mobile/sh-store-brebes/sh-store-brebes.jpg"
   },
   {
     "title": "Sahabat Hampers",
@@ -91,7 +100,8 @@
       "Firebase"
     ],
     "category": "Mobile App",
-    "type": "Freelance"
+    "type": "Freelance",
+    "thumbnail": "/assets/projects/thumbs/mobile/sahabat-hampers/sahabat-hampers.jpg"
   },
   {
     "title": "Belajar Anak",
@@ -105,7 +115,8 @@
       "Firebase"
     ],
     "category": "Mobile App",
-    "type": "Freelance"
+    "type": "Freelance",
+    "thumbnail": "/assets/projects/thumbs/mobile/belajar-anak/belajar-anak.jpg"
   },
   {
     "title": "HR Group Property - CP",
@@ -125,7 +136,12 @@
     ],
     "demo": "https://hrgroupsuksesid.web.app/",
     "category": "Website",
-    "type": "Admin Website"
+    "type": "Admin Website",
+    "thumbnail": "/assets/projects/thumbs/web/hr-group-cp/hr-group-cp.jpg",
+    "imageThumbnails": [
+      "/assets/projects/thumbs/web/hr-group-cp/hr-group-cp.jpg",
+      "/assets/projects/thumbs/web/hr-group-cp/hr-group-cp2.jpg"
+    ]
   },
   {
     "title": "HR Group Property - Absensi",
@@ -145,7 +161,12 @@
     ],
     "demo": "",
     "category": "Website",
-    "type": "Admin Website"
+    "type": "Admin Website",
+    "thumbnail": "/assets/projects/thumbs/web/hr-group-absen/hr-group-absen.jpg",
+    "imageThumbnails": [
+      "/assets/projects/thumbs/web/hr-group-absen/hr-group-dashboard-admin.jpg",
+      "/assets/projects/thumbs/web/hr-group-absen/hr-group-dashboard-peserta.jpg"
+    ]
   },
   {
     "title": "Arsip Hotel",
@@ -161,7 +182,8 @@
     ],
     "demo": "https://arsip-hotel.vercel.app/",
     "category": "Website",
-    "type": "Freelance"
+    "type": "Freelance",
+    "thumbnail": "/assets/projects/thumbs/web/arsip-hotel/arsip-hotel.jpg"
   },
   {
     "title": "Hotel Room Monitor",
@@ -181,7 +203,12 @@
     ],
     "demo": "https://hotel-monitor.vercel.app",
     "category": "Website",
-    "type": "Freelance"
+    "type": "Freelance",
+    "thumbnail": "/assets/projects/thumbs/web/hotel-room-monitor/hotel-room-monitor-login.jpg",
+    "imageThumbnails": [
+      "/assets/projects/thumbs/web/hotel-room-monitor/hotel-room-monitor-login.jpg",
+      "/assets/projects/thumbs/web/hotel-room-monitor/hotel-room-monitor-dashboard.jpg"
+    ]
   },
   {
     "title": "Ilham Cell",
@@ -201,7 +228,12 @@
     ],
     "demo": "https://ilham-cell.netlify.app/",
     "category": "Website",
-    "type": "Freelance"
+    "type": "Freelance",
+    "thumbnail": "/assets/projects/thumbs/web/ilham-cell/ilham-cell.jpg",
+    "imageThumbnails": [
+      "/assets/projects/thumbs/web/ilham-cell/ilham-cell.jpg",
+      "/assets/projects/thumbs/web/ilham-cell/ilham-cell-produk.jpg"
+    ]
   },
   {
     "title": "Toko Amartha",
@@ -220,7 +252,12 @@
       "Hive"
     ],
     "category": "Desktop App",
-    "type": "Freelance"
+    "type": "Freelance",
+    "thumbnail": "/assets/projects/thumbs/desktop/toko-amartha/toko_amartha.jpg",
+    "imageThumbnails": [
+      "/assets/projects/thumbs/desktop/toko-amartha/toko_amartha.jpg",
+      "/assets/projects/thumbs/desktop/toko-amartha/toko_amartha2.jpg"
+    ]
   },
   {
     "title": "Toko Yasmine",
@@ -242,6 +279,14 @@
       "MySQL"
     ],
     "category": "Desktop App",
-    "type": "Freelance"
+    "type": "Freelance",
+    "thumbnail": "/assets/projects/thumbs/desktop/toko-yasmine/toko_yasmine.jpg",
+    "imageThumbnails": [
+      "/assets/projects/thumbs/desktop/toko-yasmine/toko_yasmine.jpg",
+      "/assets/projects/thumbs/desktop/toko-yasmine/toko_yasmine2.jpg",
+      "/assets/projects/thumbs/desktop/toko-yasmine/toko_yasmine3.jpg",
+      "/assets/projects/thumbs/desktop/toko-yasmine/toko_yasmine4.jpg",
+      "/assets/projects/thumbs/desktop/toko-yasmine/toko_yasmine5.jpg"
+    ]
   }
 ]

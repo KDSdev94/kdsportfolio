@@ -7,6 +7,7 @@ interface Certificate {
   title: LocalizedText;
   issuer: string;
   image: string;
+  thumbnail?: string;
   date?: string;
   category?: string;
   credentialUrl?: string;
@@ -36,11 +37,14 @@ export default function Certificates({ preview = false }: CertificatesProps) {
 
         {displayedCertificates.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
-            {displayedCertificates.map((certificate, index) => (
-              <article
-                key={`${certificate.issuer}-${index}`}
-                className="overflow-hidden bg-gray-50 dark:bg-gray-700 rounded-xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300"
-              >
+            {displayedCertificates.map((certificate, index) => {
+              const previewImage = certificate.thumbnail ?? certificate.image;
+
+              return (
+                <article
+                  key={`${certificate.issuer}-${index}`}
+                  className="overflow-hidden bg-gray-50 dark:bg-gray-700 rounded-xl border border-gray-100 dark:border-gray-600 shadow-sm hover:shadow-md transition-all duration-300"
+                >
                 <a
                   href={certificate.image}
                   target="_blank"
@@ -50,9 +54,11 @@ export default function Certificates({ preview = false }: CertificatesProps) {
                 >
                   <div className="aspect-[4/3] overflow-hidden">
                     <img
-                      src={certificate.image}
+                      src={previewImage}
                       alt={localize(certificate.title)}
                       loading="lazy"
+                      decoding="async"
+                      sizes="(min-width: 1280px) 33vw, (min-width: 640px) 50vw, 100vw"
                       className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                     />
                   </div>
@@ -99,8 +105,9 @@ export default function Certificates({ preview = false }: CertificatesProps) {
                     </a>
                   )}
                 </div>
-              </article>
-            ))}
+                </article>
+              );
+            })}
           </div>
         ) : (
           <div className="bg-gray-50 dark:bg-gray-700 rounded-xl p-6 sm:p-8 border border-dashed border-gray-200 dark:border-gray-600">

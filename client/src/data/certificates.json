@@ -5,9 +5,10 @@
       "en": "Software Engineer"
     },
     "issuer": "HackerRank",
-    "image": "/assets/sertif/software_engineer%20certificate_page-0001.jpg",
+    "image": "/assets/sertif/software_engineer%20certificate.jpg",
     "date": "2 Juni 2026",
-    "category": "Software Engineering"
+    "category": "Software Engineering",
+    "thumbnail": "/assets/sertif/thumbs/software_engineer_certificate.jpg"
   },
   {
     "title": {
@@ -15,9 +16,10 @@
       "en": "MagangHub Admin"
     },
     "issuer": "MagangHub",
-    "image": "/assets/sertif/maganghub-admin.jpg",
+    "image": "/assets/sertif/maganghub_admin.jpg",
     "date": "1 Juni 2026",
-    "category": "Admin"
+    "category": "Admin",
+    "thumbnail": "/assets/sertif/thumbs/maganghub_admin.jpg"
   },
   {
     "title": {
@@ -25,9 +27,10 @@
       "en": "Skillpedia Excel"
     },
     "issuer": "Skillpedia",
-    "image": "/assets/sertif/skillpedia-excel.png",
+    "image": "/assets/sertif/skillpedia_excel.png",
     "date": "7 Juni 2026",
-    "category": "Productivity"
+    "category": "Productivity",
+    "thumbnail": "/assets/sertif/thumbs/skillpedia_excel.jpg"
   },
   {
     "title": {
@@ -35,9 +38,10 @@
       "en": "Microsoft Office Certification"
     },
     "issuer": "Kursus Digital & LKP Borju Komputer",
-    "image": "/assets/sertif/Sertifikat%20Office.jpg",
+    "image": "/assets/sertif/sertifikat_office.jpg",
     "date": "22 Oktober 2025",
-    "category": "Microsoft Office"
+    "category": "Microsoft Office",
+    "thumbnail": "/assets/sertif/thumbs/sertifikat_office.jpg"
   },
   {
     "title": {
@@ -45,9 +49,10 @@
       "en": "React Basic"
     },
     "issuer": "HackerRank",
-    "image": "/assets/sertif/react_basic%20certificate_page-0001.jpg",
+    "image": "/assets/sertif/react_basic%20certificate.jpg",
     "date": "2 Juni 2026",
-    "category": "Frontend"
+    "category": "Frontend",
+    "thumbnail": "/assets/sertif/thumbs/react_basic_certificate.jpg"
   },
   {
     "title": {
@@ -55,9 +60,10 @@
       "en": "Problem Solving Intermediate"
     },
     "issuer": "HackerRank",
-    "image": "/assets/sertif/problem_solving_intermediate%20certificate_page-0001.jpg",
+    "image": "/assets/sertif/problem_solving_intermediate%20certificate.jpg",
     "date": "2 Juni 2026",
-    "category": "Problem Solving"
+    "category": "Problem Solving",
+    "thumbnail": "/assets/sertif/thumbs/problem_solving_intermediate_certificate.jpg"
   },
   {
     "title": {
@@ -65,9 +71,10 @@
       "en": "Node.js Basic"
     },
     "issuer": "HackerRank",
-    "image": "/assets/sertif/nodejs_basic%20certificate_page-0001.jpg",
+    "image": "/assets/sertif/nodejs_basic%20certificate.jpg",
     "date": "2 Juni 2026",
-    "category": "Backend"
+    "category": "Backend",
+    "thumbnail": "/assets/sertif/thumbs/nodejs_basic_certificate.jpg"
   },
   {
     "title": {
@@ -75,9 +82,10 @@
       "en": "SQL Intermediate"
     },
     "issuer": "HackerRank",
-    "image": "/assets/sertif/sql_intermediate%20certificate_page-0001.jpg",
+    "image": "/assets/sertif/sql_intermediate%20certificate.jpg",
     "date": "2 Juni 2026",
-    "category": "Database"
+    "category": "Database",
+    "thumbnail": "/assets/sertif/thumbs/sql_intermediate_certificate.jpg"
   },
   {
     "title": {
@@ -85,9 +93,10 @@
       "en": "SQL Basic"
     },
     "issuer": "HackerRank",
-    "image": "/assets/sertif/sql_basic%20certificate_page-0001.jpg",
+    "image": "/assets/sertif/sql_basic%20certificate.jpg",
     "date": "2 Juni 2026",
-    "category": "Database"
+    "category": "Database",
+    "thumbnail": "/assets/sertif/thumbs/sql_basic_certificate.jpg"
   },
   {
     "title": {
@@ -95,9 +104,10 @@
       "en": "Problem Solving Basic"
     },
     "issuer": "HackerRank",
-    "image": "/assets/sertif/problem_solving_basic%20certificate_page-0001.jpg",
+    "image": "/assets/sertif/problem_solving_basic%20certificate.jpg",
     "date": "2 Juni 2026",
-    "category": "Problem Solving"
+    "category": "Problem Solving",
+    "thumbnail": "/assets/sertif/thumbs/problem_solving_basic_certificate.jpg"
   },
   {
     "title": {
@@ -105,19 +115,65 @@
       "en": "C# Basic"
     },
     "issuer": "HackerRank",
-    "image": "/assets/sertif/c_sharp_basic%20certificate_page-0001.jpg",
+    "image": "/assets/sertif/c_sharp_basic%20certificate.jpg",
     "date": "2 Juni 2026",
-    "category": "Programming"
+    "category": "Programming",
+    "thumbnail": "/assets/sertif/thumbs/c_sharp_basic_certificate.jpg"
   },
   {
     "title": {
-      "id": "CSS",
-      "en": "CSS"
+      "id": "CSS Basic",
+      "en": "CSS Basic"
     },
     "issuer": "HackerRank",
-    "image": "/assets/sertif/css%20certificate_page-0001.jpg",
+    "image": "/assets/sertif/css_basic_certificate.jpg",
     "date": "2 Juni 2026",
-    "category": "Frontend"
+    "category": "Frontend",
+    "thumbnail": "/assets/sertif/thumbs/css_basic_certificate.jpg"
+  },
+  {
+    "title": {
+      "id": "Python Basic",
+      "en": "Python Basic"
+    },
+    "issuer": "HackerRank",
+    "image": "/assets/sertif/python_basic%20certificate.jpg",
+    "date": "9 Juni 2026",
+    "category": "Programming",
+    "thumbnail": "/assets/sertif/thumbs/python_basic_certificate.jpg"
+  },
+  {
+    "title": {
+      "id": "Java Basic",
+      "en": "Java Basic"
+    },
+    "issuer": "HackerRank",
+    "image": "/assets/sertif/java_basic%20certificate.jpg",
+    "date": "9 Juni 2026",
+    "category": "Programming",
+    "thumbnail": "/assets/sertif/thumbs/java_basic_certificate.jpg"
+  },
+  {
+    "title": {
+      "id": "Go Basic",
+      "en": "Go Basic"
+    },
+    "issuer": "HackerRank",
+    "image": "/assets/sertif/go_basic%20certificate.jpg",
+    "date": "9 Juni 2026",
+    "category": "Programming",
+    "thumbnail": "/assets/sertif/thumbs/go_basic_certificate.jpg"
+  },
+  {
+    "title": {
+      "id": "Go Intermediate",
+      "en": "Go Intermediate"
+    },
+    "issuer": "HackerRank",
+    "image": "/assets/sertif/go_intermediate%20certificate.jpg",
+    "date": "9 Juni 2026",
+    "category": "Programming",
+    "thumbnail": "/assets/sertif/thumbs/go_intermediate_certificate.jpg"
   },
   {
     "title": {
@@ -125,9 +181,10 @@
       "en": "Node.js Intermediate"
     },
     "issuer": "HackerRank",
-    "image": "/assets/sertif/nodejs_intermediate%20certificate_page-0001.jpg",
+    "image": "/assets/sertif/nodejs_intermediate%20certificate.jpg",
     "date": "2 Juni 2026",
-    "category": "Backend"
+    "category": "Backend",
+    "thumbnail": "/assets/sertif/thumbs/nodejs_intermediate_certificate.jpg"
   },
   {
     "title": {
@@ -135,8 +192,9 @@
       "en": "SQL Advanced"
     },
     "issuer": "HackerRank",
-    "image": "/assets/sertif/sql_advanced%20certificate_page-0001.jpg",
+    "image": "/assets/sertif/sql_advanced%20certificate.jpg",
     "date": "1 Juni 2026",
-    "category": "Database"
+    "category": "Database",
+    "thumbnail": "/assets/sertif/thumbs/sql_advanced_certificate.jpg"
   }
 ]

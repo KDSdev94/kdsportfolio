@@ -16,7 +16,9 @@ interface Project {
   title: string;
   description: LocalizedText;
   image: string;
+  thumbnail?: string;
   images?: string[];
+  imageThumbnails?: string[];
   technologies: string[];
   category: string;
   demo?: string;
@@ -135,9 +137,11 @@ export default function PortfolioPage() {
                   {/* Project Image */}
                   <div className="relative overflow-hidden aspect-video">
                     <img
-                      src={project.image}
+                      src={project.thumbnail ?? project.image}
                       alt={project.title}
                       loading="lazy"
+                      decoding="async"
+                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                       className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105 bg-gray-50 dark:bg-gray-700"
                     />
                   </div>

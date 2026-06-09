@@ -27,7 +27,9 @@ interface Project {
   title: string;
   description: LocalizedText;
   image: string;
+  thumbnail?: string;
   images?: string[];
+  imageThumbnails?: string[];
   technologies: string[];
   category: string;
   type: string;
@@ -98,9 +100,11 @@ export default function Experience() {
                   <div className="p-4">
                     <div className="relative overflow-hidden rounded-lg mb-4 aspect-video">
                       <img
-                        src={project.image}
+                        src={project.thumbnail ?? project.image}
                         alt={project.title}
                         loading="lazy"
+                        decoding="async"
+                        sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                         className="w-full h-full object-cover transition-transform duration-300 hover:scale-105 bg-gray-50 dark:bg-gray-700"
                       />
                     </div>
@@ -147,9 +151,11 @@ export default function Experience() {
                 <div className="p-4">
                   <div className="relative overflow-hidden rounded-lg mb-4 aspect-video">
                     <img
-                      src={project.image}
+                      src={project.thumbnail ?? project.image}
                       alt={project.title}
                       loading="lazy"
+                      decoding="async"
+                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                       className="w-full h-full object-cover transition-transform duration-300 hover:scale-105 bg-gray-50 dark:bg-gray-700"
                     />
                   </div>
