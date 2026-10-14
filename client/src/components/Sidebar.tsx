@@ -35,12 +35,14 @@ export default function Sidebar({ activeSection, onNavigate }: SidebarProps) {
   ];
 
   const handleNavigation = (itemId: string) => {
-    if (itemId === "portfolio") {
+    if (itemId === "introduction") {
+      setLocation("/");
+    } else if (itemId === "certificates") {
+      setLocation("/certificates");
+    } else if (itemId === "portfolio") {
       setLocation("/portfolio");
     } else if (itemId === "testimonials") {
       setLocation("/testimonials");
-    } else if (itemId === "introduction") {
-      setLocation("/");
     } else if (itemId === "contact") {
       setLocation("/contact");
     } else {

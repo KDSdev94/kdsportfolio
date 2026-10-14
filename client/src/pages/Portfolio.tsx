@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import Sidebar from "@/components/Sidebar";
 import MobileHeader from "@/components/MobileHeader";
 import { useLocation } from "wouter";
@@ -9,8 +9,6 @@ import { LocalizedText, useLanguage } from "../contexts/LanguageContext";
 import projectsData from "../data/projects.json";
 import { usePageMeta } from "../hooks/use-page-meta";
 import ProjectDetailDialog from "@/components/ProjectDetailDialog";
-
-
 
 interface Project {
   title: string;
@@ -27,7 +25,6 @@ interface Project {
 export default function PortfolioPage() {
   const [activeSection, setActiveSection] = useState("portfolio");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
   const { t, localize } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [, setLocation] = useLocation();
@@ -46,7 +43,6 @@ export default function PortfolioPage() {
     "Website": t("portfolio.filter.web"),
     "Desktop App": t("portfolio.filter.desktop"),
   };
-
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,14 +72,14 @@ export default function PortfolioPage() {
       // Already on portfolio page
       return;
     }
-    // Navigate back to home page
-    window.location.href = "/";
+    // Navigate using SPA router — no full page reload
+    setLocation("/");
   };
 
   const projects: Project[] = projectsData as Project[];
   const filteredProjects = selectedCategory === "All"
     ? projects
-    : projects.filter(p => p.category === selectedCategory);
+    : projects.filter((p) => p.category === selectedCategory);
 
   return (
     <div className="bg-gray-50 dark:bg-gray-900 font-inter transition-colors">

@@ -1,5 +1,31 @@
 [
   {
+    "title": "Kodein",
+    "description": {
+      "id": "Platform freelance jasa pengembangan website, software custom, aplikasi mobile, dan desain UI/UX. Solusi digital end-to-end yang cepat, tepat, dan telah dipercaya lebih dari 20+ klien.",
+      "en": "A freelance platform providing website development, custom software, mobile applications, and UI/UX design services. Fast, precise end-to-end digital solutions trusted by 20+ clients."
+    },
+    "image": "/assets/projects/web/kodein/kodein.png",
+    "images": [
+      "/assets/projects/web/kodein/kodein.png",
+      "/assets/projects/web/kodein/kodein2.png",
+      "/assets/projects/web/kodein/kodein3.png"      
+    ],
+    "technologies": [
+      "Next.js",
+      "Tailwind CSS",
+      "Vercel"
+    ],
+    "demo": "https://www.kodeinaja.my.id/",
+    "category": "Website",
+    "type": "Freelance",
+    "thumbnail": "/assets/projects/thumbs/web/kodein/kodein.jpg",
+    "imageThumbnails": [
+      "/assets/projects/thumbs/web/kodein/kodein.jpg",
+      "/assets/projects/thumbs/web/kodein/kodein2.jpg"
+    ]
+  },
+  {
     "title": "E-SkuulTime",
     "description": {
       "id": "Aplikasi ini dirancang untuk mempermudah pengelolaan jadwal, aktivitas akademik, serta komunikasi antara admin, guru, dan siswa dalam satu platform yang terintegrasi.",
