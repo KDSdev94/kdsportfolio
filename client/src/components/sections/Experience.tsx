@@ -48,9 +48,14 @@ export default function Experience() {
     const freelance = allProjects.filter(p => p.type === "Freelance");
     const admin = allProjects.filter(p => p.type === "Admin Website");
 
-    // Pick 3 random freelance projects
-    const shuffledFreelance = [...freelance].sort(() => 0.5 - Math.random());
-    setFreelanceProjects(shuffledFreelance.slice(0, 3));
+    // Pin "Kodein" as the first card always, shuffle the rest for 2 remaining slots
+    const kodein = freelance.find(p => p.title === "Kodein");
+    const others = freelance.filter(p => p.title !== "Kodein");
+    const shuffledOthers = [...others].sort(() => 0.5 - Math.random());
+    const pinned = kodein
+      ? [kodein, ...shuffledOthers.slice(0, 2)]
+      : shuffledOthers.slice(0, 3);
+    setFreelanceProjects(pinned);
 
     // Show all admin projects
     setAdminProjects(admin);
