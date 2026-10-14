@@ -208,7 +208,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Kurniawan Dwi Saputra**
 
 - GitHub: [@KDSdev94](https://github.com/KDSdev94)
-- Portfolio: https://wawankds.netlify.app/
+- Portfolio: www.heyitskds.web.id
 - Email: kurdwisap04@gmail.com
 
 ---
